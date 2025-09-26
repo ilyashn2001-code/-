@@ -34,21 +34,51 @@
     .tab-content.active {
       display: block;
     }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .filters input {
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
   </style>
 </head>
 <body>
   <h1>📘 Журналы</h1>
 
   <div class="tabs">
-    <button class="tab-button active" data-tab="table-objects">📁 Реестр объектов</button>
-    <button class="tab-button" data-tab="table-documents">📎 Реестр документов</button>
+    <button class="tab-button active" data-tab="objects-section">📁 Реестр объектов</button>
+    <button class="tab-button" data-tab="documents-section">📎 Реестр документов</button>
   </div>
 
-  <div id="table-objects" class="tab-content active">
+  <!-- 📁 Вкладка 1: Реестр объектов -->
+  <div id="objects-section" class="tab-content active">
+    <div class="filters" id="object-filters">
+      <input type="text" id="filter-name" placeholder="Наименование объекта">
+      <input type="text" id="filter-id" placeholder="ID объекта">
+      <input type="text" id="filter-status" placeholder="Статус">
+      <input type="text" id="filter-district" placeholder="Округ">
+      <input type="text" id="filter-performer" placeholder="Исполнитель">
+      <input type="text" id="filter-year" placeholder="Год проведения">
+      <input type="text" id="filter-start" placeholder="Начало периода">
+      <input type="text" id="filter-end" placeholder="Конец периода">
+    </div>
     <div id="table-objects"></div>
   </div>
 
-  <div id="table-documents" class="tab-content">
+  <!-- 📎 Вкладка 2: Реестр документов -->
+  <div id="documents-section" class="tab-content">
+    <div class="filters" id="document-filters">
+      <input type="text" id="filter-doc-name" placeholder="Наименование документа">
+      <input type="text" id="filter-doc-num" placeholder="Номер документа">
+      <input type="text" id="filter-doc-date" placeholder="Дата документа">
+    </div>
     <div id="table-documents"></div>
   </div>
 
