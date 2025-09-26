@@ -123,15 +123,6 @@ const objectFilterFields = [
   { id: "filter-responsible", field: "responsible" },
 ];
 
-objectFilterFields.forEach(({ id, field }) => {
-  const input = document.getElementById(id);
-  input.addEventListener("input", () => {
-    const filters = objectFilterFields.map(({ id, field }) => {
-      return { field, type: "like", value: document.getElementById(id).value };
-    });
-    tableObjects.setFilter(filters);
-  });
-});
 
 
 // 📋 Колонки объектов
@@ -193,7 +184,7 @@ const tableObjects = new Tabulator("#table-objects", {
 
 
   // 📎 Реестр документов
-  const tableDocuments = new Tabulator("#tableDocuments", {
+  const tableDocuments = new Tabulator("#table-documents", {
     data: documentsData,
     columns: documentColumns,
     layout: "fitDataStretch",
