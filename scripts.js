@@ -141,17 +141,29 @@ const documentColumns = [
 
 document.addEventListener("DOMContentLoaded", () => {
   // 📁 Реестр объектов
-  const tableObjects = new Tabulator("#tableObjects", {
-    data: objectData,
-    columns: objectColumns,
-    layout: "fitDataStretch",
-    height: 500,
-    placeholder: "Нет данных",
-    dataTree: true,
-    dataTreeStartExpanded: false,
-    dataTreeChildField: "works",
-    pagination: false
-  });
+const tableObjects = new Tabulator("#table-objects", {
+  data: objectData,
+  columns: [
+    { title: "Наименование", field: "name", headerSort: false },
+    { title: "ID объекта", field: "objectId" },
+    { title: "ID ОГХ", field: "oghId" },
+    { title: "Год", field: "year" },
+    { title: "Округ", field: "district" },
+    { title: "Исполнитель", field: "performer" },
+    { title: "Ответственный", field: "responsible" },
+    { title: "Дата начала", field: "startDate" },
+    { title: "Дата окончания", field: "endDate" },
+    { title: "% Завершения", field: "progress" },
+  ],
+  layout: "fitDataStretch",
+  height: 500,
+  placeholder: "Нет данных",
+  dataTree: true,
+  dataTreeStartExpanded: false,
+  dataTreeChildField: "_children", // ✅ правильно
+  dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>",
+  dataTreeExpandElement: "<span style='margin-right:6px;'>▼</span>",
+});
 
   // 📎 Реестр документов
   const tableDocuments = new Tabulator("#tableDocuments", {
