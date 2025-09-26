@@ -121,7 +121,41 @@ const objectFilterFields = [
   { id: "filter-district", field: "district" },
   { id: "filter-performer", field: "performer" },
   { id: "filter-responsible", field: "responsible" },
+  { id: "filter-status", field: "status" },
+  { id: "filter-start", field: "startDate" },
+  { id: "filter-end", field: "endDate" },
 ];
+
+document.addEventListener("DOMContentLoaded", () => {
+  const tableObjects = new Tabulator("#table-objects", {
+    data: objectData,
+    layout: "fitColumns",
+    placeholder: "Нет данных",
+    dataTree: true,
+    dataTreeStartExpanded: false,
+    dataTreeChildField: "_children",
+    headerSort: false,
+    autoResize: true,
+    responsiveLayout: "hide",
+    height: "100%", // ⬅️ адаптивная высота
+    columns: objectColumns,
+  });
+
+  objectFilterFields.forEach(({ id, field }) => {
+    const input = document.getElementById(id);
+    if (input) {
+      input.addEventListener("input", () => {
+        const filters = objectFilterFields
+          .map(({ id, field }) => {
+            const value = document.getElementById(id).value.trim();
+            return value ? { field, type: "like", value } : null;
+          })
+          .filter(Boolean);
+        tableObjects.setFilter(filters);
+      });
+    }
+  });
+});
 
 
 
