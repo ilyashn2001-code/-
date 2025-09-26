@@ -149,8 +149,11 @@ const tableObjects = new Tabulator("#table-objects", {
   dataTree: true,
   dataTreeStartExpanded: false,
   dataTreeChildField: "_children",
- dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>",
+
+  dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>",
   dataTreeExpandElement: "<span style='margin-right:6px;'>▶</span>",
+
+  headerSort: false,
 
   columns: [
     { title: "Наименование", field: "name", widthGrow: 2.5 },
@@ -165,6 +168,7 @@ const tableObjects = new Tabulator("#table-objects", {
     { title: "% Завершения", field: "progress" },
   ],
 });
+
 
 
   // 📎 Реестр документов
