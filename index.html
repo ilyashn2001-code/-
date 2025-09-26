@@ -4,25 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Журналы объектов</title>
-
-  <!-- ✅ Локальные стили -->
-  <link href="tabulator.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="tabulator.min.css" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .tabs {
+      display: flex;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .tab-button {
+      padding: 8px 16px;
+      background: #e0e0e0;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .tab-button.active {
+      background: #2196f3;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <h1>📘 Журналы объектов</h1>
+  <h1>📘 Журналы</h1>
 
-  <div class="filters">
-    <select id="districtFilter"><option value="">Округ</option></select>
-    <select id="areaFilter"><option value="">Район</option></select>
-    <select id="contractorFilter"><option value="">Подрядчик</option></select>
-    <select id="responsibleFilter"><option value="">Ответственный</option></select>
+  <div class="tabs">
+    <button class="tab-button active" data-tab="objects">📁 Реестр объектов</button>
+    <button class="tab-button" data-tab="documents">📎 Реестр документов</button>
   </div>
 
-  <!-- 🧾 Таблица -->
-  <div id="journalTable"></div>
+  <div id="objects" class="tab-content active">
+    <div id="table-objects"></div>
+  </div>
 
-  <!-- ✅ Локальные скрипты -->
+  <div id="documents" class="tab-content">
+    <div id="table-documents"></div>
+  </div>
+
   <script src="tabulator.min.js"></script>
   <script src="scripts.js"></script>
 </body>
