@@ -1,4 +1,4 @@
-// Шаг 1: Генерация тестовых данных (6 объектов)
+// 1. Генерация данных
 const journalData = Array.from({ length: 6 }, (_, i) => ({
   objectTitle: `Объект №${i + 1}, ул. Примерная, д. ${10 + i}`,
   objectId: 100 + i,
@@ -34,27 +34,25 @@ const journalData = Array.from({ length: 6 }, (_, i) => ({
   ]
 }));
 
-// Шаг 2: Преобразование для Tabulator
+// 2. Преобразование данных в формат Tabulator
 function transformToTabulator(data) {
   return data.map(obj => ({
     id: `obj-${obj.objectId}`,
     name: obj.objectTitle,
     type: "object",
     children: [
-      // Работы
       ...obj.works.map((w, i) => ({
         id: `work-${obj.objectId}-${i}`,
-        name: w.repairRange,
+        name: `Работа: ${w.repairRange}`,
         type: "work",
         objectId: w.objectId,
         performer: w.performer,
         contractor: w.contractor,
         responsible: w.responsible,
       })),
-      // Документы
       ...obj.documents.map((d, i) => ({
         id: `doc-${obj.objectId}-${i}`,
-        name: d.title,
+        name: `Документ: ${d.title}`,
         type: "document",
         docType: d.type,
         uploadDate: d.uploadDate,
@@ -64,16 +62,17 @@ function transformToTabulator(data) {
   }));
 }
 
-// Шаг 3: Инициализация таблицы после загрузки страницы
+// 3. Рендер таблицы
 document.addEventListener("DOMContentLoaded", () => {
   const tableData = transformToTabulator(journalData);
 
   new Tabulator("#journalTable", {
     data: tableData,
     dataTree: true,
-    dataTreeStartExpanded: false, // свернуто по умолчанию
+    dataTreeStartExpanded: false,
     layout: "fitColumns",
     height: "600px",
+    placeholder: "Нет данных для отображения",
     columns: [
       { title: "Наименование", field: "name", widthGrow: 2 },
       { title: "ID объекта", field: "objectId", hozAlign: "center" },
@@ -82,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
       { title: "Тип документа", field: "docType" },
       { title: "Дата загрузки", field: "uploadDate" },
       { title: "Ответственный", field: "responsible" },
-    ],
-    placeholder: "Нет данных для отображения",
+    ]
   });
 });
