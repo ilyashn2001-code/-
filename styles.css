@@ -164,3 +164,19 @@ body {
   padding: 12px 8px; /* увеличить вертикальные отступы */
   font-size: 15px; /* опционально — чуть крупнее шрифт */
 }
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#tab-objects {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#table-objects {
+  flex-grow: 1;
+}
