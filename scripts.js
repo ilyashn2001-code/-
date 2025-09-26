@@ -65,7 +65,9 @@ function transformToTabulator(data) {
 document.addEventListener("DOMContentLoaded", () => {
   const tableData = transformToTabulator(journalData);
 
-  const table = new Tabulator("#journalTable", {
+  console.log("👉 Данные для таблицы:", tableData); // 👈 добавлено для отладки
+
+  new Tabulator("#journalTable", {
     data: tableData,
     dataTree: true,
     dataTreeStartExpanded: true,
