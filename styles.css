@@ -22,3 +22,7 @@ select {
   border: 1px solid #ccc;
 }
 
+#journalTable {
+  border: 1px solid #ddd;
+  background: white;
+}
