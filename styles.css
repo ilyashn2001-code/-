@@ -12,9 +12,9 @@ header h1 {
 
 .filters {
   display: flex;
-  gap: 15px;
-  margin-bottom: 25px;
   flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
 }
 
 .filters select {
@@ -22,36 +22,51 @@ header h1 {
   border-radius: 5px;
   border: 1px solid #ccc;
   background: #fff;
-  min-width: 150px;
+  min-width: 140px;
 }
 
-details {
-  margin-bottom: 15px;
+.card {
   background: #fff;
-  border-radius: 8px;
-  padding: 15px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  border-radius: 10px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 20px;
+  transition: 0.3s ease;
 }
 
-details > summary {
-  font-weight: bold;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 10px;
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card h2::before {
+  content: "📁";
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .table th, .table td {
-  border: 1px solid #ccc;
   padding: 8px 10px;
   text-align: left;
+  border-bottom: 1px solid #eee;
 }
 
-.table th {
-  background: #e8f0fe;
+.table thead th {
+  background-color: #eef2f8;
+  font-weight: 600;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
 }
