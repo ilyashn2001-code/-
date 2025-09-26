@@ -26,8 +26,3 @@ select {
   border: 1px solid #ddd;
   background: white;
 }
-#journalTable {
-  border: 1px solid red;
-  min-height: 200px;
-  background: white;
-}
