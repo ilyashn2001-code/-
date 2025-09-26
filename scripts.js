@@ -34,7 +34,7 @@ const journalData = Array.from({ length: 6 }, (_, i) => ({
   ]
 }));
 
-// 2. Трансформация для Tabulator
+// 2. Преобразование под Tabulator
 function transformToTabulator(data) {
   return data.map(obj => ({
     id: `obj-${obj.objectId}`,
@@ -43,26 +43,26 @@ function transformToTabulator(data) {
     children: [
       ...obj.works.map((w, i) => ({
         id: `work-${obj.objectId}-${i}`,
-        name: `Работа: ${w.repairRange}`,
-        type: "work",
+        name: `🔧 ${w.repairRange}`,
         objectId: w.objectId,
         performer: w.performer,
         contractor: w.contractor,
         responsible: w.responsible,
+        type: "work"
       })),
       ...obj.documents.map((d, i) => ({
         id: `doc-${obj.objectId}-${i}`,
-        name: `Документ: ${d.title}`,
-        type: "document",
+        name: `📄 ${d.title}`,
         docType: d.type,
         uploadDate: d.uploadDate,
         responsible: d.responsible,
+        type: "document"
       }))
     ]
   }));
 }
 
-// 3. Инициализация таблицы
+// 3. Отрисовка таблицы
 document.addEventListener("DOMContentLoaded", () => {
   const tableData = transformToTabulator(journalData);
 
@@ -80,7 +80,15 @@ document.addEventListener("DOMContentLoaded", () => {
       { title: "Подрядчик", field: "contractor" },
       { title: "Тип документа", field: "docType" },
       { title: "Дата загрузки", field: "uploadDate" },
-      { title: "Ответственный", field: "responsible" },
-    ]
+      { title: "Ответственный", field: "responsible" }
+    ],
+    rowFormatter: function(row) {
+      const type = row.getData().type;
+      if (type === "work") {
+        row.getElement().style.backgroundColor = "#e8f6ff";
+      } else if (type === "document") {
+        row.getElement().style.backgroundColor = "#f4f4f4";
+      }
+    }
   });
 });
