@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tableObjects = new Tabulator("#table-objects", {
     data: objectData,
     layout: "fitColumns",
-    height: 500,
+    height: 850,
     placeholder: "Нет данных",
     dataTree: true,
     dataTreeStartExpanded: false,
