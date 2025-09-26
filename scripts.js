@@ -52,19 +52,21 @@ document.addEventListener("DOMContentLoaded", () => {
     layout: "fitColumns",
     height: "600px",
     placeholder: "Нет данных для отображения",
-    columns: [
-      { title: "Наименование", field: "name", widthGrow: 2 },
-      { title: "ID объекта", field: "objectId", hozAlign: "center" },
-      { title: "Округ", field: "district" },
-      { title: "Границы ремонта", field: "repairRange" },
-      { title: "Исполнитель", field: "performer" },
-      { title: "Ответственный", field: "responsible" },
-      { title: "Тип документа", field: "docType" },
-      { title: "Номер документа", field: "docNumber" },
-      { title: "Дата загрузки", field: "uploadDate" },
-      { title: "Кол-во листов", field: "pageCount" },
-      { title: "Лист по порядку", field: "sheetNum" }
-    ],
+columns: [
+  { title: "Наименование", field: "name", widthGrow: 2 },
+  { title: "ID объекта", field: "objectId", hozAlign: "center", visible: true },
+  { title: "Округ", field: "district", visible: true },
+  { title: "Границы ремонта", field: "repairRange", visible: true },
+  { title: "Исполнитель", field: "performer", visible: true },
+  { title: "Ответственный", field: "responsible", visible: true },
+  // Документные поля
+  { title: "Тип документа", field: "docType", visible: true },
+  { title: "Номер документа", field: "docNumber", visible: true },
+  { title: "Дата загрузки", field: "uploadDate", visible: true },
+  { title: "Кол-во листов", field: "pageCount", visible: true },
+  { title: "Лист по порядку", field: "sheetNum", visible: true }
+]
+,
     rowFormatter: function(row) {
       const type = row.getData().type;
       if (type === "document") {
