@@ -193,26 +193,28 @@
     }
   ];
 
-  const objectTable = new Tabulator("#table-objects", {
-    data: objectData,
+  const objectTable =new Tabulator("#tableObjects", {
+    layout: "fitColumns",
+    height: 400,
+    placeholder: "Нет данных",
+    ajaxURL: "objects_tabulator_data.json", // ⚠️ путь к твоему JSON
     columns: [
-      { title: "Наименование", field: "name", widthGrow: 2 },
-      { title: "ID объекта", field: "objectId" },
-      { title: "Статус", field: "status" },
+      { title: "Наименование", field: "name", headerSort: false },
+      { title: "ID объекта", field: "id" },
+      { title: "ID ОГХ", field: "ogh_id" },
       { title: "Год", field: "year" },
       { title: "Округ", field: "district" },
       { title: "Исполнитель", field: "performer" },
       { title: "Ответственный", field: "responsible" },
       { title: "Дата начала", field: "startDate" },
       { title: "Дата окончания", field: "endDate" },
-      { title: "Статус работы", field: "workStatus" },
       { title: "% Завершения", field: "progress" },
     ],
-    layout: "fitColumns",
-    height: 400,
-    placeholder: "Нет данных для отображения",
     dataTree: true,
-    dataTreeChildField: "works"
+    dataTreeStartExpanded: false,
+    dataTreeChildField: "_children",
+    dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>", // стрелка вниз
+    dataTreeExpandElement: "<span style='margin-right:6px;'>▼</span>",   // та же стрелка
   });
 
   const docTable = new Tabulator("#table-documents", {
