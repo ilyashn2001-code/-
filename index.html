@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Журналы</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <title>Журналы объектов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tabulator-tables@5.6.2/dist/css/tabulator.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Журналы объектов</h1>
-  </header>
+  <h1>Журналы объектов</h1>
 
-  <section class="filters">
-    <select id="districtFilter"><option>Округ</option></select>
-    <select id="areaFilter"><option>Район</option></select>
-    <select id="contractorFilter"><option>Подрядчик</option></select>
-    <select id="responsibleFilter"><option>Ответственный</option></select>
-  </section>
+  <div class="filters">
+    <select id="districtFilter"><option value="">Округ</option></select>
+    <select id="areaFilter"><option value="">Район</option></select>
+    <select id="contractorFilter"><option value="">Подрядчик</option></select>
+    <select id="responsibleFilter"><option value="">Ответственный</option></select>
+  </div>
 
-  <main id="journalTree"></main>
+  <div id="journalTable"></div>
 
+  <script src="https://unpkg.com/tabulator-tables@5.6.2/dist/js/tabulator.min.js"></script>
   <script src="scripts.js"></script>
 </body>
 </html>
