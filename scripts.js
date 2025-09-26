@@ -8,6 +8,11 @@ const journalData = [
     performer: "АД",
     responsible: "Сторожев Владимир Львович",
     repairRange: "на всем протяжении",
+    docType: "",
+    docNumber: "",
+    uploadDate: "",
+    pageCount: "",
+    sheetNum: "",
     type: "object",
     children: [
       {
@@ -43,6 +48,7 @@ const journalData = [
     ]
   }
 ];
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const table = new Tabulator("#journalTable", {
