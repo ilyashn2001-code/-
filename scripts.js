@@ -68,7 +68,7 @@ const documentsData = [
   }
 ];
 
-// 📋 Колонки: Объекты и Работы
+// 📋 Колонки объектов
 const objectColumns = [
   { title: "Наименование", field: "name", widthGrow: 2 },
   { title: "ID объекта", field: "objectId" },
@@ -77,13 +77,13 @@ const objectColumns = [
   { title: "Округ", field: "district" },
   { title: "Исполнитель", field: "performer" },
   { title: "Ответственный", field: "responsible" },
-  { title: "Дата начала", field: "startDate" },
-  { title: "Дата окончания", field: "endDate" },
+  { title: "Начало", field: "startDate" },
+  { title: "Окончание", field: "endDate" },
   { title: "Статус работы", field: "workStatus" },
-  { title: "% Завершения", field: "progress" }
+  { title: "Прогресс", field: "progress" }
 ];
 
-// 📋 Колонки: Документы
+// 📋 Колонки документов
 const documentColumns = [
   { title: "Наименование", field: "name", widthGrow: 2 },
   { title: "Номер", field: "docNumber" },
@@ -94,68 +94,69 @@ const documentColumns = [
   { title: "Лист №", field: "sheetNum" }
 ];
 
-// 🚀 Инициализация таблиц и вкладок
 document.addEventListener("DOMContentLoaded", () => {
-  // 🏗️ Таблица: Реестр объектов с работами
-  const tableObjects = new Tabulator("#table-objects", {
+  // 📁 Реестр объектов
+  const tableObjects = new Tabulator("#tableObjects", {
     data: objectData,
     columns: objectColumns,
-    layout: "fitColumns",
-    height: "500px",
-    placeholder: "Нет данных для отображения",
+    layout: "fitDataStretch",
+    height: 500,
+    placeholder: "Нет данных",
     dataTree: true,
     dataTreeStartExpanded: false,
-    dataTreeChildField: "works"
+    dataTreeChildField: "works",
+    pagination: false
   });
 
-  // 📂 Таблица: Реестр документов с группировкой по объекту
-  const tableDocuments = new Tabulator("#table-documents", {
+  // 📎 Реестр документов
+  const tableDocuments = new Tabulator("#tableDocuments", {
     data: documentsData,
     columns: documentColumns,
-    layout: "fitColumns",
-    height: "500px",
-    placeholder: "Нет данных для отображения",
+    layout: "fitDataStretch",
+    height: 500,
+    placeholder: "Нет данных",
+    pagination: false,
     groupBy: "objectId"
   });
 
   // 🔁 Переключение вкладок
-  document.querySelectorAll(".tab-button").forEach((btn) => {
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".tab-button").forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-section").forEach(tab => tab.classList.remove("active"));
 
-      document.querySelectorAll(".tab-content").forEach((tab) => {
-        tab.classList.remove("active");
-        if (tab.id === btn.dataset.tab) {
-          tab.classList.add("active");
-        }
-      });
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.tab).classList.add("active");
     });
   });
 
-  // 🔍 Фильтры: Реестр объектов
-  document.querySelectorAll("#object-filters input").forEach((input) => {
+  // 🔍 Фильтры объектов
+  const objectFilterInputs = document.querySelectorAll("#tab-objects .top-bar input");
+  objectFilterInputs.forEach(input => {
     input.addEventListener("input", () => {
+      const [name, id, status, district, performer, year, start, end] = [...objectFilterInputs].map(i => i.value);
       tableObjects.setFilter([
-        { field: "name", type: "like", value: document.getElementById("filter-name").value },
-        { field: "objectId", type: "like", value: document.getElementById("filter-id").value },
-        { field: "status", type: "like", value: document.getElementById("filter-status").value },
-        { field: "district", type: "like", value: document.getElementById("filter-district").value },
-        { field: "performer", type: "like", value: document.getElementById("filter-performer").value },
-        { field: "year", type: "like", value: document.getElementById("filter-year").value },
-        { field: "startDate", type: "like", value: document.getElementById("filter-start").value },
-        { field: "endDate", type: "like", value: document.getElementById("filter-end").value }
+        { field: "name", type: "like", value: name },
+        { field: "objectId", type: "like", value: id },
+        { field: "status", type: "like", value: status },
+        { field: "district", type: "like", value: district },
+        { field: "performer", type: "like", value: performer },
+        { field: "year", type: "like", value: year },
+        { field: "startDate", type: "like", value: start },
+        { field: "endDate", type: "like", value: end }
       ]);
     });
   });
 
-  // 🔍 Фильтры: Реестр документов
-  document.querySelectorAll("#document-filters input").forEach((input) => {
+  // 🔍 Фильтры документов
+  const docFilterInputs = document.querySelectorAll("#tab-documents .top-bar input");
+  docFilterInputs.forEach(input => {
     input.addEventListener("input", () => {
+      const [name, number, date] = [...docFilterInputs].map(i => i.value);
       tableDocuments.setFilter([
-        { field: "name", type: "like", value: document.getElementById("filter-doc-name").value },
-        { field: "docNumber", type: "like", value: document.getElementById("filter-doc-num").value },
-        { field: "uploadDate", type: "like", value: document.getElementById("filter-doc-date").value }
+        { field: "name", type: "like", value: name },
+        { field: "docNumber", type: "like", value: number },
+        { field: "uploadDate", type: "like", value: date }
       ]);
     });
   });
