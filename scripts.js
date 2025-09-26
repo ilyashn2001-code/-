@@ -113,6 +113,27 @@ const documentsData = [
   }
 ];
 
+const objectFilterFields = [
+  { id: "filter-name", field: "name" },
+  { id: "filter-objectId", field: "objectId" },
+  { id: "filter-oghId", field: "oghId" },
+  { id: "filter-year", field: "year" },
+  { id: "filter-district", field: "district" },
+  { id: "filter-performer", field: "performer" },
+  { id: "filter-responsible", field: "responsible" },
+];
+
+objectFilterFields.forEach(({ id, field }) => {
+  const input = document.getElementById(id);
+  input.addEventListener("input", () => {
+    const filters = objectFilterFields.map(({ id, field }) => {
+      return { field, type: "like", value: document.getElementById(id).value };
+    });
+    tableObjects.setFilter(filters);
+  });
+});
+
+
 // 📋 Колонки объектов
 const objectColumns = [
   { title: "Наименование", field: "name", widthGrow: 2 },
