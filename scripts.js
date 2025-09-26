@@ -1,55 +1,52 @@
-const journalData = Array.from({ length: 3 }, (_, i) => ({
-  objectTitle: `Объект №${i + 1}, ул. Примерная, д. ${10 + i}`,
-  objectId: 100 + i,
-  works: [
-    {
-      repairRange: "01.05–10.05",
-      performer: "ООО РемСтрой",
-      contractor: "АльфаСтрой",
-      responsible: "Иванов И.И."
-    }
-  ],
-  documents: [
-    {
-      title: "Схема водоотведения.pdf",
-      type: "Схема",
-      uploadDate: "01.05.2024",
-      responsible: "Петров П.П."
-    }
-  ]
-}));
-
-function transformToTabulator(data) {
-  return data.map(obj => ({
-    id: `obj-${obj.objectId}`,
-    name: obj.objectTitle,
+// 🔧 Объект + Документы
+const journalData = [
+  {
+    id: "obj-110628",
+    name: "📍 1905 года улица",
+    objectId: 110628,
+    district: "ЦАО",
+    performer: "АД",
+    responsible: "Сторожев Владимир Львович",
+    repairRange: "на всем протяжении",
     type: "object",
     children: [
-      ...obj.works.map((w, i) => ({
-        id: `work-${obj.objectId}-${i}`,
-        name: `🔧 ${w.repairRange}`,
-        performer: w.performer,
-        contractor: w.contractor,
-        responsible: w.responsible,
-        type: "work"
-      })),
-      ...obj.documents.map((d, i) => ({
-        id: `doc-${obj.objectId}-${i}`,
-        name: `📄 ${d.title}`,
-        docType: d.type,
-        uploadDate: d.uploadDate,
-        responsible: d.responsible,
+      {
+        id: "doc-110628-1",
+        name: "📄 Реестр приложений к акту",
+        docType: "Реестр",
+        docNumber: "б/н",
+        uploadDate: "22.09.2024",
+        pageCount: 2,
+        sheetNum: 566,
         type: "document"
-      }))
+      },
+      {
+        id: "doc-110628-2",
+        name: "📄 Сертификат качества (газон)",
+        docType: "Сертификат",
+        docNumber: "829413ГТ",
+        uploadDate: "03.10.2019",
+        pageCount: 2,
+        sheetNum: 568,
+        type: "document"
+      },
+      {
+        id: "doc-110628-3",
+        name: "📄 Документ о замене (бетон)",
+        docType: "Инфо",
+        docNumber: "530",
+        uploadDate: "11.08.2024",
+        pageCount: 1,
+        sheetNum: 570,
+        type: "document"
+      }
     ]
-  }));
-}
+  }
+];
 
 document.addEventListener("DOMContentLoaded", () => {
-  const tableData = transformToTabulator(journalData);
-
-  new Tabulator("#journalTable", {
-    data: tableData,
+  const table = new Tabulator("#journalTable", {
+    data: journalData,
     dataTree: true,
     dataTreeStartExpanded: true,
     layout: "fitColumns",
@@ -57,17 +54,20 @@ document.addEventListener("DOMContentLoaded", () => {
     placeholder: "Нет данных для отображения",
     columns: [
       { title: "Наименование", field: "name", widthGrow: 2 },
+      { title: "ID объекта", field: "objectId", hozAlign: "center" },
+      { title: "Округ", field: "district" },
+      { title: "Границы ремонта", field: "repairRange" },
       { title: "Исполнитель", field: "performer" },
-      { title: "Подрядчик", field: "contractor" },
+      { title: "Ответственный", field: "responsible" },
       { title: "Тип документа", field: "docType" },
+      { title: "Номер документа", field: "docNumber" },
       { title: "Дата загрузки", field: "uploadDate" },
-      { title: "Ответственный", field: "responsible" }
+      { title: "Кол-во листов", field: "pageCount" },
+      { title: "Лист по порядку", field: "sheetNum" }
     ],
     rowFormatter: function(row) {
       const type = row.getData().type;
-      if (type === "work") {
-        row.getElement().style.backgroundColor = "#e8f6ff";
-      } else if (type === "document") {
+      if (type === "document") {
         row.getElement().style.backgroundColor = "#f9f9f9";
       }
     }
