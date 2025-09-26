@@ -624,6 +624,16 @@
       sheetNum: 568
     }
   ];
+  
+<div class="filters top-bar">
+  <input type="text" placeholder="Наименование объекта" id="filter-name">
+  <input type="text" placeholder="ID объекта" id="filter-objectId">
+  <input type="text" placeholder="ID ОГХ" id="filter-oghId">
+  <input type="text" placeholder="Год" id="filter-year">
+  <input type="text" placeholder="Округ" id="filter-district">
+  <input type="text" placeholder="Исполнитель" id="filter-performer">
+  <input type="text" placeholder="Ответственный" id="filter-responsible">
+</div>
 
   const tableObjects = new Tabulator("#table-objects", {
     data: objectData,
