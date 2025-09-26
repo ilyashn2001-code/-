@@ -160,3 +160,7 @@ body {
     min-width: 100%;
   }
 }
+.tabulator-row .tabulator-cell {
+  padding: 12px 8px; /* увеличить вертикальные отступы */
+  font-size: 15px; /* опционально — чуть крупнее шрифт */
+}
