@@ -1,217 +1,245 @@
-<!-- journals.html -->
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Журналы</title>
 
+  <!-- Шрифты и стили -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="photos.css" /> <!-- Стили от photos.html -->
+  <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f4f6f8;
+    }
 
-  <script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
-  <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/1d9fdf34d3.js" crossorigin="anonymous"></script>
+    .app-container {
+      display: flex;
+      height: 100vh;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .sidebar li.active {
+      font-weight: bold;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .tab-btn {
+      background-color: #3498db;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background-color: #2980b9;
+    }
+
+    .tab-section {
+      display: none;
+    }
+
+    .tab-section.active {
+      display: block;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .filters input {
+      padding: 6px;
+      min-width: 150px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
-  <div class="app-container">
-    <aside class="sidebar">
-      <h2>Intellectual Journal</h2>
-      <ul>
-        <li><i class="fas fa-tachometer-alt"></i> Дашборд</li>
-        <li><i class="fas fa-building"></i> Объекты</li>
-        <li><i class="fas fa-camera"></i> Фотографии</li>
-        <li class="active"><i class="fas fa-book"></i> Журналы</li>
-        <li><i class="fas fa-chart-line"></i> Отчёты</li>
-      </ul>
-    </aside>
+<div class="app-container">
+  <aside class="sidebar">
+    <h2>Intellectual Journal</h2>
+    <ul>
+      <li>Дашборд</li>
+      <li>Объекты</li>
+      <li>Фотографии</li>
+      <li class="active">Журналы</li>
+      <li>Отчёты</li>
+    </ul>
+  </aside>
 
-    <main class="main-content">
-      <header class="header">
-        <h1>Журналы</h1>
-        <button id="themeToggle" class="theme-toggle">🌗</button>
-      </header>
+  <main class="main-content">
+    <div class="header">
+      <h1>Журналы</h1>
+      <button id="themeToggle">🌗</button>
+    </div>
 
-      <!-- Вкладки -->
-      <div class="tabs">
-        <button class="tab-btn active" data-tab="tab-objects">📁 Реестр объектов</button>
-        <button class="tab-btn" data-tab="tab-documents">📎 Реестр документов</button>
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="tab-objects">📁 Реестр объектов</button>
+      <button class="tab-btn" data-tab="tab-documents">📎 Реестр документов</button>
+    </div>
+
+    <div id="tab-objects" class="tab-section active">
+      <div class="filters" id="object-filters">
+        <input id="filter-name" placeholder="Наименование объекта" />
+        <input id="filter-id" placeholder="ID объекта" />
+        <input id="filter-status" placeholder="Статус" />
+        <input id="filter-district" placeholder="Округ" />
+        <input id="filter-performer" placeholder="Исполнитель" />
+        <input id="filter-year" placeholder="Год проведения" />
+        <input id="filter-start" placeholder="Начало периода" />
+        <input id="filter-end" placeholder="Конец периода" />
       </div>
+      <div id="table-objects"></div>
+    </div>
 
-      <!-- 📁 Реестр объектов -->
-      <section id="tab-objects" class="tab-section active">
-        <div class="top-bar filters" id="object-filters">
-          <input id="filter-name" placeholder="Наименование объекта" />
-          <input id="filter-id" placeholder="ID объекта" />
-          <input id="filter-status" placeholder="Статус" />
-          <input id="filter-district" placeholder="Округ" />
-          <input id="filter-performer" placeholder="Исполнитель" />
-          <input id="filter-year" placeholder="Год проведения" />
-          <input id="filter-start" placeholder="Начало периода" />
-          <input id="filter-end" placeholder="Конец периода" />
-        </div>
-        <div id="tableObjects"></div>
-      </section>
+    <div id="tab-documents" class="tab-section">
+      <div class="filters" id="document-filters">
+        <input id="filter-doc-name" placeholder="Наименование документа" />
+        <input id="filter-doc-num" placeholder="Номер документа" />
+        <input id="filter-doc-date" placeholder="Дата документа" />
+      </div>
+      <div id="table-documents"></div>
+    </div>
+  </main>
+</div>
 
-      <!-- 📎 Реестр документов -->
-      <section id="tab-documents" class="tab-section">
-        <div class="top-bar filters" id="document-filters">
-          <input id="filter-doc-name" placeholder="Наименование документа" />
-          <input id="filter-doc-num" placeholder="Номер документа" />
-          <input id="filter-doc-date" placeholder="Дата документа" />
-        </div>
-        <div id="tableDocuments"></div>
-      </section>
-    </main>
-  </div>
+<script src="https://unpkg.com/tabulator-tables@5.5.0/dist/js/tabulator.min.js"></script>
+<script>
+  const objectData = [
+    {
+      id: "obj-110628",
+      name: "\ud83d\udccd 1905 года улица",
+      objectId: 110628,
+      district: "ЦАО",
+      performer: "АД",
+      responsible: "Сторожев В. Л.",
+      status: "В работе",
+      year: "2024",
+      startDate: "01.03.2024",
+      endDate: "30.09.2024",
+      progress: 80,
+      workStatus: "Идёт",
+      works: []
+    }
+  ];
 
-  <script>
-    // Данные
-    const objectData = [
-      {
-        id: "obj-110628",
-        name: "📍 1905 года улица",
-        objectId: 110628,
-        district: "ЦАО",
-        performer: "АД",
-        responsible: "Сторожев В. Л.",
-        status: "В работе",
-        year: "2024",
-        startDate: "01.03.2024",
-        endDate: "30.09.2024",
-        progress: 80,
-        workStatus: "Идёт",
-        works: [
-          {
-            name: "Работа 1: Демонтаж",
-            objectId: 110628,
-            district: "ЦАО",
-            performer: "АД",
-            responsible: "Иванов",
-            status: "Завершено",
-            year: "2024",
-            startDate: "01.03.2024",
-            endDate: "15.05.2024",
-            progress: 100,
-            workStatus: "Завершено"
-          },
-          {
-            name: "Работа 2: Озеленение",
-            objectId: 110628,
-            district: "ЦАО",
-            performer: "АД",
-            responsible: "Петров",
-            status: "В процессе",
-            year: "2024",
-            startDate: "16.05.2024",
-            endDate: "30.09.2024",
-            progress: 60,
-            workStatus: "В работе"
-          }
-        ]
-      }
-    ];
+  const documentsData = [
+    {
+      id: "doc-110628-1",
+      name: "\ud83d\udcc4 Реестр приложений к акту",
+      objectId: 110628,
+      docType: "Реестр",
+      docNumber: "б/н",
+      uploadDate: "22.09.2024",
+      pageCount: 2,
+      sheetNum: 566
+    },
+    {
+      id: "doc-110628-2",
+      name: "\ud83d\udcc4 Сертификат качества (газон)",
+      objectId: 110628,
+      docType: "Сертификат",
+      docNumber: "829413ГТ",
+      uploadDate: "03.10.2019",
+      pageCount: 2,
+      sheetNum: 568
+    }
+  ];
 
-    const documentsData = [
-      {
-        id: "doc-110628-1",
-        name: "📄 Реестр приложений к акту",
-        objectId: 110628,
-        docType: "Реестр",
-        docNumber: "б/н",
-        uploadDate: "22.09.2024",
-        pageCount: 2,
-        sheetNum: 566
-      },
-      {
-        id: "doc-110628-2",
-        name: "📄 Сертификат качества (газон)",
-        objectId: 110628,
-        docType: "Сертификат",
-        docNumber: "829413ГТ",
-        uploadDate: "03.10.2019",
-        pageCount: 2,
-        sheetNum: 568
-      }
-    ];
+  const objectTable = new Tabulator("#table-objects", {
+    data: objectData,
+    columns: [
+      { title: "Наименование", field: "name", widthGrow: 2 },
+      { title: "ID объекта", field: "objectId" },
+      { title: "Статус", field: "status" },
+      { title: "Год", field: "year" },
+      { title: "Округ", field: "district" },
+      { title: "Исполнитель", field: "performer" },
+      { title: "Ответственный", field: "responsible" },
+      { title: "Дата начала", field: "startDate" },
+      { title: "Дата окончания", field: "endDate" },
+      { title: "Статус работы", field: "workStatus" },
+      { title: "% Завершения", field: "progress" },
+    ],
+    layout: "fitColumns",
+    height: 400,
+    placeholder: "Нет данных для отображения",
+    dataTree: true,
+    dataTreeChildField: "works"
+  });
 
-    // Таблицы
-    const tableObjects = new Tabulator("#tableObjects", {
-      data: objectData,
-      columns: [
-        { title: "Наименование", field: "name", widthGrow: 2 },
-        { title: "ID объекта", field: "objectId" },
-        { title: "Статус", field: "status" },
-        { title: "Год", field: "year" },
-        { title: "Округ", field: "district" },
-        { title: "Исполнитель", field: "performer" },
-        { title: "Ответственный", field: "responsible" },
-        { title: "Дата начала", field: "startDate" },
-        { title: "Дата окончания", field: "endDate" },
-        { title: "Статус работы", field: "workStatus" },
-        { title: "% Завершения", field: "progress" }
-      ],
-      layout: "fitColumns",
-      height: 500,
-      dataTree: true,
-      dataTreeStartExpanded: false,
-      dataTreeChildField: "works",
-      placeholder: "Нет данных для отображения"
+  const docTable = new Tabulator("#table-documents", {
+    data: documentsData,
+    columns: [
+      { title: "Наименование", field: "name", widthGrow: 2 },
+      { title: "Номер", field: "docNumber" },
+      { title: "Дата", field: "uploadDate" },
+      { title: "Тип", field: "docType" },
+      { title: "ID объекта", field: "objectId" },
+      { title: "Листов", field: "pageCount" },
+      { title: "Лист №", field: "sheetNum" },
+    ],
+    layout: "fitColumns",
+    height: 400,
+    placeholder: "Нет данных для отображения",
+    groupBy: "objectId"
+  });
+
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll(".tab-section").forEach(t => t.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(btn.dataset.tab).classList.add("active");
     });
-
-    const tableDocuments = new Tabulator("#tableDocuments", {
-      data: documentsData,
-      columns: [
-        { title: "Наименование", field: "name", widthGrow: 2 },
-        { title: "Номер", field: "docNumber" },
-        { title: "Дата", field: "uploadDate" },
-        { title: "Тип", field: "docType" },
-        { title: "ID объекта", field: "objectId" },
-        { title: "Листов", field: "pageCount" },
-        { title: "Лист №", field: "sheetNum" }
-      ],
-      layout: "fitColumns",
-      height: 500,
-      groupBy: "objectId",
-      placeholder: "Нет данных для отображения"
-    });
-
-    // Переключение табов
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-        document.querySelectorAll(".tab-section").forEach(tab => tab.classList.remove("active"));
-        btn.classList.add("active");
-        document.getElementById(btn.dataset.tab).classList.add("active");
-      });
-    });
-
-    // Фильтрация объектов
-    document.querySelectorAll("#object-filters input").forEach(input => {
-      input.addEventListener("input", () => {
-        tableObjects.setFilter([
-          { field: "name", type: "like", value: document.getElementById("filter-name").value },
-          { field: "objectId", type: "like", value: document.getElementById("filter-id").value },
-          { field: "status", type: "like", value: document.getElementById("filter-status").value },
-          { field: "district", type: "like", value: document.getElementById("filter-district").value },
-          { field: "performer", type: "like", value: document.getElementById("filter-performer").value },
-          { field: "year", type: "like", value: document.getElementById("filter-year").value },
-          { field: "startDate", type: "like", value: document.getElementById("filter-start").value },
-          { field: "endDate", type: "like", value: document.getElementById("filter-end").value }
-        ]);
-      });
-    });
-
-    // Фильтрация документов
-    document.querySelectorAll("#document-filters input").forEach(input => {
-      input.addEventListener("input", () => {
-        tableDocuments.setFilter([
-          { field: "name", type: "like", value: document.getElementById("filter-doc-name").value },
-          { field: "docNumber", type: "like", value: document.getElementById("filter-doc-num").value },
-          { field: "uploadDate", type: "like", value: document.getElementById("filter-doc-date").value }
-        ]);
-      });
-    });
-  </script>
+  });
+</script>
 </body>
 </html>
