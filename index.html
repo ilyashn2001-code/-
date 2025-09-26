@@ -83,21 +83,21 @@
       <button class="tab-btn" data-tab="tab-documents">📎 Реестр документов</button>
     </div>
 
-    <div id="tab-objects" class="tab-section active">
+<div id="tab-objects" class="tab-section active">
+  <div class="filters top-bar">
+    <input type="text" id="filter-name" placeholder="Наименование объекта">
+    <input type="text" id="filter-objectId" placeholder="ID объекта">
+    <input type="text" id="filter-status" placeholder="Статус">
+    <input type="text" id="filter-district" placeholder="Округ">
+    <input type="text" id="filter-performer" placeholder="Исполнитель">
+    <input type="text" id="filter-year" placeholder="Год">
+    <input type="text" id="filter-start" placeholder="Начало">
+    <input type="text" id="filter-end" placeholder="Окончание">
+  </div>
 
-<div class="filters top-bar">
-  <input type="text" placeholder="Наименование объекта" id="filter-name">
-  <input type="text" placeholder="ID объекта" id="filter-objectId">
-  <input type="text" placeholder="ID ОГХ" id="filter-oghId">
-  <input type="text" placeholder="Год" id="filter-year">
-  <input type="text" placeholder="Округ" id="filter-district">
-  <input type="text" placeholder="Исполнитель" id="filter-performer">
-  <input type="text" placeholder="Ответственный" id="filter-responsible">
+  <div id="table-objects"></div>
 </div>
-      
-      <div id="table-objects"></div>
-    </div>
-
+    
     <div id="tab-documents" class="tab-section">
       <div id="table-documents"></div>
     </div>
