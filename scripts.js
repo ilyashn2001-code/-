@@ -163,16 +163,17 @@ document.addEventListener("DOMContentLoaded", () => {
 const objectColumns = [
   { title: "Наименование", field: "name", widthGrow: 2 },
   { title: "ID объекта", field: "objectId" },
-  { title: "Статус", field: "status" },
+  { title: "ID ОГХ", field: "oghId" },
   { title: "Год", field: "year" },
   { title: "Округ", field: "district" },
   { title: "Исполнитель", field: "performer" },
   { title: "Ответственный", field: "responsible" },
+  { title: "Статус", field: "status" },
   { title: "Начало", field: "startDate" },
   { title: "Окончание", field: "endDate" },
-  { title: "Статус работы", field: "workStatus" },
-  { title: "Прогресс", field: "progress" }
+  { title: "Прогресс", field: "progress" },
 ];
+
 
 // 📋 Колонки документов
 const documentColumns = [
