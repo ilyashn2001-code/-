@@ -1,3 +1,4 @@
+/* 🌐 Базовые стили */
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #f0f2f5;
@@ -5,24 +6,86 @@ body {
   padding: 20px;
 }
 
+/* 🏷️ Заголовок */
 h1 {
-  margin-bottom: 15px;
-  font-size: 24px;
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: #333;
 }
 
+/* 📑 Вкладки */
+.tabs {
+  display: flex;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.tab-button {
+  padding: 8px 16px;
+  background: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s;
+}
+
+.tab-button:hover {
+  background: #ccc;
+}
+
+.tab-button.active {
+  background: #2196f3;
+  color: white;
+}
+
+/* 📂 Контейнеры вкладок */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* 🔍 Фильтры */
 .filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
-select {
+.filters input {
   padding: 6px 12px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  background: white;
+  min-width: 180px;
+  font-size: 14px;
 }
 
-#journalTable {
+.filters input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+/* 📋 Таблицы */
+#table-objects,
+#table-documents {
   border: 1px solid #ddd;
   background: white;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+/* 🎯 Таблицы без данных */
+.tabulator .tabulator-placeholder .tabulator-placeholder-contents {
+  font-style: italic;
+  color: #888;
+}
+
+/* 🖥️ Scrollbar для table-holder */
+.tabulator .tabulator-tableholder {
+  border-radius: 4px;
 }
