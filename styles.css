@@ -1,72 +1,18 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f6f9;
-  margin: 0;
-  padding: 20px;
-  color: #333;
+  font-family: sans-serif;
+  background-color: #f5f7fa;
+  margin: 20px;
 }
 
-header h1 {
+h1 {
   margin-bottom: 20px;
 }
 
 .filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 25px;
-}
-
-.filters select {
-  padding: 8px 12px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background: #fff;
-  min-width: 140px;
-}
-
-.card {
-  background: #fff;
-  border-radius: 10px;
-  margin-bottom: 25px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  padding: 20px;
-  transition: 0.3s ease;
-}
-
-.card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.card h2 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.card h2::before {
-  content: "📁";
-}
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
   margin-bottom: 20px;
 }
 
-.table th, .table td {
-  padding: 8px 10px;
-  text-align: left;
-  border-bottom: 1px solid #eee;
-}
-
-.table thead th {
-  background-color: #eef2f8;
-  font-weight: 600;
-}
-
-.table tbody tr:last-child td {
-  border-bottom: none;
+.filters select {
+  margin-right: 10px;
+  padding: 5px;
 }
