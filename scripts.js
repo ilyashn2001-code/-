@@ -1,5 +1,5 @@
-// 🔧 Объект + Документы
-const journalData = [
+// 🔧 Реестр объектов
+const objectData = [
   {
     id: "obj-110628",
     name: "📍 1905 года улица",
@@ -7,77 +7,90 @@ const journalData = [
     district: "ЦАО",
     performer: "АД",
     responsible: "Сторожев Владимир Львович",
-    repairRange: "на всем протяжении",
-    docType: "",
-    docNumber: "",
-    uploadDate: "",
-    pageCount: "",
-    sheetNum: "",
-    type: "object",
-    children: [
-      {
-        id: "doc-110628-1",
-        name: "📄 Реестр приложений к акту",
-        docType: "Реестр",
-        docNumber: "б/н",
-        uploadDate: "22.09.2024",
-        pageCount: 2,
-        sheetNum: 566,
-        type: "document"
-      },
-      {
-        id: "doc-110628-2",
-        name: "📄 Сертификат качества (газон)",
-        docType: "Сертификат",
-        docNumber: "829413ГТ",
-        uploadDate: "03.10.2019",
-        pageCount: 2,
-        sheetNum: 568,
-        type: "document"
-      },
-      {
-        id: "doc-110628-3",
-        name: "📄 Документ о замене (бетон)",
-        docType: "Инфо",
-        docNumber: "530",
-        uploadDate: "11.08.2024",
-        pageCount: 1,
-        sheetNum: 570,
-        type: "document"
-      }
-    ]
+    repairRange: "на всем протяжении"
   }
 ];
 
+// 📎 Реестр документов
+const documentsData = [
+  {
+    id: "doc-110628-1",
+    name: "📄 Реестр приложений к акту",
+    objectId: 110628,
+    docType: "Реестр",
+    docNumber: "б/н",
+    uploadDate: "22.09.2024",
+    pageCount: 2,
+    sheetNum: 566
+  },
+  {
+    id: "doc-110628-2",
+    name: "📄 Сертификат качества (газон)",
+    objectId: 110628,
+    docType: "Сертификат",
+    docNumber: "829413ГТ",
+    uploadDate: "03.10.2019",
+    pageCount: 2,
+    sheetNum: 568
+  }
+];
 
-document.addEventListener("DOMContentLoaded", () => {
-  const table = new Tabulator("#journalTable", {
-    data: journalData,
-    dataTree: true,
-    dataTreeStartExpanded: true,
-    layout: "fitColumns",
-    height: "600px",
-    placeholder: "Нет данных для отображения",
-columns: [
+// 📋 Колонки для объектов
+const objectColumns = [
   { title: "Наименование", field: "name", widthGrow: 2 },
-  { title: "ID объекта", field: "objectId", hozAlign: "center", visible: true },
-  { title: "Округ", field: "district", visible: true },
-  { title: "Границы ремонта", field: "repairRange", visible: true },
-  { title: "Исполнитель", field: "performer", visible: true },
-  { title: "Ответственный", field: "responsible", visible: true },
-  // Документные поля
-  { title: "Тип документа", field: "docType", visible: true },
-  { title: "Номер документа", field: "docNumber", visible: true },
-  { title: "Дата загрузки", field: "uploadDate", visible: true },
-  { title: "Кол-во листов", field: "pageCount", visible: true },
-  { title: "Лист по порядку", field: "sheetNum", visible: true }
-]
-,
-    rowFormatter: function(row) {
-      const type = row.getData().type;
-      if (type === "document") {
-        row.getElement().style.backgroundColor = "#f9f9f9";
-      }
-    }
+  { title: "ID объекта", field: "objectId" },
+  { title: "Округ", field: "district" },
+  { title: "Границы ремонта", field: "repairRange" },
+  { title: "Исполнитель", field: "performer" },
+  { title: "Ответственный", field: "responsible" }
+];
+
+// 📋 Колонки для документов
+const documentColumns = [
+  { title: "Документ", field: "name", widthGrow: 2 },
+  { title: "ID объекта", field: "objectId" },
+  { title: "Тип", field: "docType" },
+  { title: "Номер", field: "docNumber" },
+  { title: "Дата загрузки", field: "uploadDate" },
+  { title: "Листов", field: "pageCount" },
+  { title: "Лист по порядку", field: "sheetNum" }
+];
+
+// 🚀 Инициализация таблиц и вкладок
+document.addEventListener("DOMContentLoaded", () => {
+  // Реестр объектов
+  new Tabulator("#table-objects", {
+    data: objectData,
+    columns: objectColumns,
+    layout: "fitColumns",
+    height: "500px",
+    placeholder: "Нет данных для отображения"
+  });
+
+  // Реестр документов
+  new Tabulator("#table-documents", {
+    data: documentsData,
+    columns: documentColumns,
+    layout: "fitColumns",
+    height: "500px",
+    placeholder: "Нет данных для отображения"
+  });
+
+  // 🔁 Переключение вкладок
+  const tabButtons = document.querySelectorAll(".tab-button");
+  const tabContents = document.querySelectorAll(".tab-content");
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      tabButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      tabContents.forEach(tab => {
+        tab.classList.remove("active");
+        if (tab.id === btn.dataset.tab) {
+          tab.classList.add("active");
+        }
+      });
+    });
   });
 });
