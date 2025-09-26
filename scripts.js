@@ -153,35 +153,30 @@ const documentColumns = [
 
 document.addEventListener("DOMContentLoaded", () => {
   // 📁 Реестр объектов
-const tableObjects = new Tabulator("#table-objects", {
-  data: objectData,
-  layout: "fitColumns",
-  height: 500,
-  placeholder: "Нет данных",
-  dataTree: true,
-  dataTreeStartExpanded: false,
-  dataTreeChildField: "_children",
-
-  dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>",
-  dataTreeExpandElement: "<span style='margin-right:6px;'>▶</span>",
-
-  headerSort: false,
-
-  columns: [
-    { title: "Наименование", field: "name", widthGrow: 2.5 },
-    { title: "ID объекта", field: "objectId" },
-    { title: "ID ОГХ", field: "oghId" },
-    { title: "Год", field: "year" },
-    { title: "Округ", field: "district" },
-    { title: "Исполнитель", field: "performer" },
-    { title: "Ответственный", field: "responsible" },
-    { title: "Дата начала", field: "startDate" },
-    { title: "Дата окончания", field: "endDate" },
-    { title: "% Завершения", field: "progress" },
-  ],
-});
-
-
+  const tableObjects = new Tabulator("#table-objects", {
+    data: objectData,
+    layout: "fitColumns",
+    height: 500,
+    placeholder: "Нет данных",
+    dataTree: true,
+    dataTreeStartExpanded: false,
+    dataTreeChildField: "_children",
+    dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>",
+    dataTreeExpandElement: "<span style='margin-right:6px;'>▶</span>",
+    headerSort: false,
+    columns: [
+      { title: "Наименование", field: "name", widthGrow: 2.5 },
+      { title: "ID объекта", field: "objectId" },
+      { title: "ID ОГХ", field: "oghId" },
+      { title: "Год", field: "year" },
+      { title: "Округ", field: "district" },
+      { title: "Исполнитель", field: "performer" },
+      { title: "Ответственный", field: "responsible" },
+      { title: "Дата начала", field: "startDate" },
+      { title: "Дата окончания", field: "endDate" },
+      { title: "% Завершения", field: "progress" },
+    ],
+  });
 
   // 📎 Реестр документов
   const tableDocuments = new Tabulator("#table-documents", {
@@ -199,29 +194,41 @@ const tableObjects = new Tabulator("#table-objects", {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
       document.querySelectorAll(".tab-section").forEach(tab => tab.classList.remove("active"));
-
       btn.classList.add("active");
       document.getElementById(btn.dataset.tab).classList.add("active");
     });
   });
 
-  // 🔍 Фильтры объектов
+  // 🧾 Объявление переменных фильтров (проверь наличие input'ов в HTML)
+  const filterName = document.getElementById("filter-name");
+  const filterObjectId = document.getElementById("filter-objectId");
+  const filterStatus = document.getElementById("filter-status");
+  const filterDistrict = document.getElementById("filter-district");
+  const filterPerformer = document.getElementById("filter-performer");
+  const filterYear = document.getElementById("filter-year");
+  const filterStart = document.getElementById("filter-start");
+  const filterEnd = document.getElementById("filter-end");
+
+  // 🔍 Фильтрация объектов
   const objectFilterInputs = document.querySelectorAll("#tab-objects .top-bar input");
   objectFilterInputs.forEach(input => {
     input.addEventListener("input", () => {
-      const [name, id, status, district, performer, year, start, end] = [...objectFilterInputs].map(i => i.value);
-      tableObjects.setFilter([
-        { field: "name", type: "like", value: name },
-        { field: "objectId", type: "like", value: id },
-        { field: "status", type: "like", value: status },
-        { field: "district", type: "like", value: district },
-        { field: "performer", type: "like", value: performer },
-        { field: "year", type: "like", value: year },
-        { field: "startDate", type: "like", value: start },
-        { field: "endDate", type: "like", value: end }
-      ]);
+      const filters = [];
+
+      if (filterName?.value) filters.push({ field: "name", type: "like", value: filterName.value });
+      if (filterObjectId?.value) filters.push({ field: "objectId", type: "like", value: filterObjectId.value });
+      if (filterStatus?.value) filters.push({ field: "status", type: "like", value: filterStatus.value });
+      if (filterDistrict?.value) filters.push({ field: "district", type: "like", value: filterDistrict.value });
+      if (filterPerformer?.value) filters.push({ field: "performer", type: "like", value: filterPerformer.value });
+      if (filterYear?.value) filters.push({ field: "year", type: "like", value: filterYear.value });
+      if (filterStart?.value) filters.push({ field: "startDate", type: "like", value: filterStart.value });
+      if (filterEnd?.value) filters.push({ field: "endDate", type: "like", value: filterEnd.value });
+
+      tableObjects.setFilter(filters);
     });
   });
+});
+
 
   // 🔍 Фильтры документов
   const docFilterInputs = document.querySelectorAll("#tab-documents .top-bar input");
