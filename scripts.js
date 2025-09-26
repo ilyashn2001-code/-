@@ -143,15 +143,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // 📁 Реестр объектов
 const tableObjects = new Tabulator("#table-objects", {
   data: objectData,
-  layout: "fitDataStretch",
+  layout: "fitColumns",
   height: 500,
   placeholder: "Нет данных",
   dataTree: true,
   dataTreeStartExpanded: false,
   dataTreeChildField: "_children",
-  headerSort: false, // ⛔ отключить сортировку
+ dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>",
+  dataTreeExpandElement: "<span style='margin-right:6px;'>▶</span>",
+
   columns: [
-    { title: "Наименование", field: "name", widthGrow: 3 },
+    { title: "Наименование", field: "name", widthGrow: 2.5 },
     { title: "ID объекта", field: "objectId" },
     { title: "ID ОГХ", field: "oghId" },
     { title: "Год", field: "year" },
