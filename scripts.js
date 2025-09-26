@@ -1,60 +1,55 @@
-const journalData = [
-  {
-    objectTitle: "Путевой пр., д. 38",
-    objectId: 101,
-    works: [
-      {
-        repairRange: "01.05–10.05",
-        objectId: 101,
-        performer: "ООО РемСтрой",
-        contractor: "АльфаСтрой",
-        responsible: "Иванов И.И."
-      },
-      {
-        repairRange: "11.05–15.05",
-        objectId: 101,
-        performer: "ООО ГазонСервис",
-        contractor: "АльфаСтрой",
-        responsible: "Петров П.П."
-      }
-    ],
-    documents: [
-      {
-        title: "Схема водоотведения.pdf",
-        type: "Схема",
-        uploadDate: "01.05.2024",
-        responsible: "Петров П.П."
-      },
-      {
-        title: "Акт приёмки №12.docx",
-        type: "Акт",
-        uploadDate: "10.05.2024",
-        responsible: "Сидоров С.С."
-      }
-    ]
-  }
-];
+const journalData = Array.from({ length: 6 }, (_, i) => ({
+  objectTitle: `Объект №${i + 1}, ул. Примерная, д. ${10 + i}`,
+  objectId: 100 + i,
+  works: [
+    {
+      repairRange: "01.05–10.05",
+      objectId: 100 + i,
+      performer: "ООО РемСтрой",
+      contractor: "АльфаСтрой",
+      responsible: "Иванов И.И."
+    },
+    {
+      repairRange: "11.05–15.05",
+      objectId: 100 + i,
+      performer: "ООО ГазонСервис",
+      contractor: "АльфаСтрой",
+      responsible: "Петров П.П."
+    }
+  ],
+  documents: [
+    {
+      title: "Схема водоотведения.pdf",
+      type: "Схема",
+      uploadDate: "01.05.2024",
+      responsible: "Петров П.П."
+    },
+    {
+      title: "Акт приёмки №12.docx",
+      type: "Акт",
+      uploadDate: "10.05.2024",
+      responsible: "Сидоров С.С."
+    }
+  ]
+}));
 
 function renderJournal(data) {
   const container = document.getElementById('journalTree');
   container.innerHTML = '';
 
   data.forEach(obj => {
-    const el = document.createElement('details');
-    el.open = true;
+    const card = document.createElement('div');
+    card.className = 'card';
 
-    const summary = document.createElement('summary');
-    summary.textContent = `📁 ${obj.objectTitle}`;
-    el.appendChild(summary);
+    const title = document.createElement('h2');
+    title.textContent = obj.objectTitle;
+    card.appendChild(title);
 
     // Виды работ
     const worksTable = document.createElement('table');
     worksTable.className = 'table';
     worksTable.innerHTML = `
       <thead>
-        <tr>
-          <th colspan="5">Виды работ</th>
-        </tr>
         <tr>
           <th>Границы ремонта</th>
           <th>ID объекта</th>
@@ -75,16 +70,13 @@ function renderJournal(data) {
         `).join('')}
       </tbody>
     `;
-    el.appendChild(worksTable);
+    card.appendChild(worksTable);
 
     // Документы
     const docsTable = document.createElement('table');
     docsTable.className = 'table';
     docsTable.innerHTML = `
       <thead>
-        <tr>
-          <th colspan="4">Документы</th>
-        </tr>
         <tr>
           <th>Название документа</th>
           <th>Тип</th>
@@ -103,9 +95,9 @@ function renderJournal(data) {
         `).join('')}
       </tbody>
     `;
-    el.appendChild(docsTable);
+    card.appendChild(docsTable);
 
-    container.appendChild(el);
+    container.appendChild(card);
   });
 }
 
