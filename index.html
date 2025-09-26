@@ -2,10 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Журналы</title>
-
-  <!-- Шрифты и стили -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css">
   <style>
@@ -14,57 +11,36 @@
       font-family: 'Montserrat', sans-serif;
       background-color: #f4f6f8;
     }
-
     .app-container {
       display: flex;
       height: 100vh;
     }
-
     .sidebar {
       width: 220px;
       background-color: #2c3e50;
       color: white;
       padding: 20px;
     }
-
-    .sidebar h2 {
-      font-size: 18px;
-      margin-bottom: 20px;
-    }
-
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .sidebar li {
-      margin: 10px 0;
-      cursor: pointer;
-    }
-
-    .sidebar li.active {
-      font-weight: bold;
-    }
-
+    .sidebar h2 { font-size: 18px; margin-bottom: 20px; }
+    .sidebar ul { list-style: none; padding: 0; }
+    .sidebar li { margin: 10px 0; cursor: pointer; }
+    .sidebar li.active { font-weight: bold; }
     .main-content {
       flex: 1;
       padding: 20px;
       overflow-y: auto;
     }
-
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 20px;
     }
-
     .tabs {
       display: flex;
       gap: 10px;
       margin-bottom: 15px;
     }
-
     .tab-btn {
       background-color: #3498db;
       color: white;
@@ -73,31 +49,14 @@
       border-radius: 4px;
       cursor: pointer;
     }
-
     .tab-btn.active {
       background-color: #2980b9;
     }
-
     .tab-section {
       display: none;
     }
-
     .tab-section.active {
       display: block;
-    }
-
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .filters input {
-      padding: 6px;
-      min-width: 150px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
     }
   </style>
 </head>
@@ -117,7 +76,6 @@
   <main class="main-content">
     <div class="header">
       <h1>Журналы</h1>
-      <button id="themeToggle">🌗</button>
     </div>
 
     <div class="tabs">
@@ -126,25 +84,10 @@
     </div>
 
     <div id="tab-objects" class="tab-section active">
-      <div class="filters" id="object-filters">
-        <input id="filter-name" placeholder="Наименование объекта" />
-        <input id="filter-id" placeholder="ID объекта" />
-        <input id="filter-status" placeholder="Статус" />
-        <input id="filter-district" placeholder="Округ" />
-        <input id="filter-performer" placeholder="Исполнитель" />
-        <input id="filter-year" placeholder="Год проведения" />
-        <input id="filter-start" placeholder="Начало периода" />
-        <input id="filter-end" placeholder="Конец периода" />
-      </div>
       <div id="table-objects"></div>
     </div>
 
     <div id="tab-documents" class="tab-section">
-      <div class="filters" id="document-filters">
-        <input id="filter-doc-name" placeholder="Наименование документа" />
-        <input id="filter-doc-num" placeholder="Номер документа" />
-        <input id="filter-doc-date" placeholder="Дата документа" />
-      </div>
       <div id="table-documents"></div>
     </div>
   </main>
@@ -154,27 +97,49 @@
 <script>
   const objectData = [
     {
-      id: "obj-110628",
-      name: "\ud83d\udccd 1905 года улица",
-      objectId: 110628,
-      district: "ЦАО",
+      name: "🏠 Путевой пр. 38",
+      objectId: "1004466",
+      oghId: "403405",
+      year: 2024,
+      district: "СВАО",
       performer: "АД",
-      responsible: "Сторожев В. Л.",
-      status: "В работе",
-      year: "2024",
-      startDate: "01.03.2024",
-      endDate: "30.09.2024",
-      progress: 80,
-      workStatus: "Идёт",
-      works: []
+      responsible: "Андреев Ю.А",
+      startDate: "15.04.2024",
+      endDate: "25.08.2024",
+      progress: "100",
+      _children: [
+        {
+          name: "Ремонт проезда",
+          objectId: "1004466",
+          oghId: "403405",
+          year: 2024,
+          district: "СВАО",
+          performer: "АД",
+          responsible: "Андреев Ю.А",
+          startDate: "15.04.2024",
+          endDate: "25.04.2024",
+          progress: "100"
+        },
+        {
+          name: "Тротуар",
+          objectId: "1004466",
+          oghId: "403405",
+          year: 2024,
+          district: "СВАО",
+          performer: "АД",
+          responsible: "Андреев Ю.А",
+          startDate: "26.04.2024",
+          endDate: "05.05.2024",
+          progress: "100"
+        }
+      ]
     }
   ];
 
   const documentsData = [
     {
-      id: "doc-110628-1",
-      name: "\ud83d\udcc4 Реестр приложений к акту",
-      objectId: 110628,
+      name: "📄 Реестр приложений к акту",
+      objectId: "1004466",
       docType: "Реестр",
       docNumber: "б/н",
       uploadDate: "22.09.2024",
@@ -182,9 +147,8 @@
       sheetNum: 566
     },
     {
-      id: "doc-110628-2",
-      name: "\ud83d\udcc4 Сертификат качества (газон)",
-      objectId: 110628,
+      name: "📄 Сертификат качества (газон)",
+      objectId: "1004466",
       docType: "Сертификат",
       docNumber: "829413ГТ",
       uploadDate: "03.10.2019",
@@ -193,32 +157,32 @@
     }
   ];
 
-  const objectTable =new Tabulator("#tableObjects", {
+  const tableObjects = new Tabulator("#table-objects", {
+    data: objectData,
     layout: "fitColumns",
-    height: 400,
     placeholder: "Нет данных",
-    ajaxURL: "objects_tabulator_data.json", // ⚠️ путь к твоему JSON
+    height: 400,
+    dataTree: true,
+    dataTreeChildField: "_children",
     columns: [
-      { title: "Наименование", field: "name", headerSort: false },
-      { title: "ID объекта", field: "id" },
-      { title: "ID ОГХ", field: "ogh_id" },
+      { title: "Наименование", field: "name", widthGrow: 2 },
+      { title: "ID объекта", field: "objectId" },
+      { title: "ID ОГХ", field: "oghId" },
       { title: "Год", field: "year" },
       { title: "Округ", field: "district" },
       { title: "Исполнитель", field: "performer" },
       { title: "Ответственный", field: "responsible" },
-      { title: "Дата начала", field: "startDate" },
-      { title: "Дата окончания", field: "endDate" },
-      { title: "% Завершения", field: "progress" },
-    ],
-    dataTree: true,
-    dataTreeStartExpanded: false,
-    dataTreeChildField: "_children",
-    dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>", // стрелка вниз
-    dataTreeExpandElement: "<span style='margin-right:6px;'>▼</span>",   // та же стрелка
+      { title: "Начало", field: "startDate" },
+      { title: "Окончание", field: "endDate" },
+      { title: "%", field: "progress" }
+    ]
   });
 
-  const docTable = new Tabulator("#table-documents", {
+  const tableDocuments = new Tabulator("#table-documents", {
     data: documentsData,
+    layout: "fitColumns",
+    placeholder: "Нет данных",
+    height: 400,
     columns: [
       { title: "Наименование", field: "name", widthGrow: 2 },
       { title: "Номер", field: "docNumber" },
@@ -226,18 +190,16 @@
       { title: "Тип", field: "docType" },
       { title: "ID объекта", field: "objectId" },
       { title: "Листов", field: "pageCount" },
-      { title: "Лист №", field: "sheetNum" },
+      { title: "Лист №", field: "sheetNum" }
     ],
-    layout: "fitColumns",
-    height: 400,
-    placeholder: "Нет данных для отображения",
     groupBy: "objectId"
   });
 
+  // Вкладки
   document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      document.querySelectorAll(".tab-section").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
       btn.classList.add("active");
       document.getElementById(btn.dataset.tab).classList.add("active");
     });
