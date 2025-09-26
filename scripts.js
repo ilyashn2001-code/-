@@ -1,3 +1,4 @@
+// Шаг 1: Генерация тестовых данных (6 объектов)
 const journalData = Array.from({ length: 6 }, (_, i) => ({
   objectTitle: `Объект №${i + 1}, ул. Примерная, д. ${10 + i}`,
   objectId: 100 + i,
@@ -33,74 +34,55 @@ const journalData = Array.from({ length: 6 }, (_, i) => ({
   ]
 }));
 
-function renderJournal(data) {
-  const container = document.getElementById('journalTree');
-  container.innerHTML = '';
-
-  data.forEach(obj => {
-    const card = document.createElement('div');
-    card.className = 'card';
-
-    const title = document.createElement('h2');
-    title.textContent = obj.objectTitle;
-    card.appendChild(title);
-
-    // Виды работ
-    const worksTable = document.createElement('table');
-    worksTable.className = 'table';
-    worksTable.innerHTML = `
-      <thead>
-        <tr>
-          <th>Границы ремонта</th>
-          <th>ID объекта</th>
-          <th>Исполнитель</th>
-          <th>Подрядчик</th>
-          <th>Ответственный</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${obj.works.map(w => `
-          <tr>
-            <td>${w.repairRange}</td>
-            <td>${w.objectId}</td>
-            <td>${w.performer}</td>
-            <td>${w.contractor}</td>
-            <td>${w.responsible}</td>
-          </tr>
-        `).join('')}
-      </tbody>
-    `;
-    card.appendChild(worksTable);
-
-    // Документы
-    const docsTable = document.createElement('table');
-    docsTable.className = 'table';
-    docsTable.innerHTML = `
-      <thead>
-        <tr>
-          <th>Название документа</th>
-          <th>Тип</th>
-          <th>Дата загрузки</th>
-          <th>Ответственный</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${obj.documents.map(d => `
-          <tr>
-            <td>${d.title}</td>
-            <td>${d.type}</td>
-            <td>${d.uploadDate}</td>
-            <td>${d.responsible}</td>
-          </tr>
-        `).join('')}
-      </tbody>
-    `;
-    card.appendChild(docsTable);
-
-    container.appendChild(card);
-  });
+// Шаг 2: Преобразование для Tabulator
+function transformToTabulator(data) {
+  return data.map(obj => ({
+    id: `obj-${obj.objectId}`,
+    name: obj.objectTitle,
+    type: "object",
+    children: [
+      // Работы
+      ...obj.works.map((w, i) => ({
+        id: `work-${obj.objectId}-${i}`,
+        name: w.repairRange,
+        type: "work",
+        objectId: w.objectId,
+        performer: w.performer,
+        contractor: w.contractor,
+        responsible: w.responsible,
+      })),
+      // Документы
+      ...obj.documents.map((d, i) => ({
+        id: `doc-${obj.objectId}-${i}`,
+        name: d.title,
+        type: "document",
+        docType: d.type,
+        uploadDate: d.uploadDate,
+        responsible: d.responsible,
+      }))
+    ]
+  }));
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderJournal(journalData);
+// Шаг 3: Инициализация таблицы после загрузки страницы
+document.addEventListener("DOMContentLoaded", () => {
+  const tableData = transformToTabulator(journalData);
+
+  new Tabulator("#journalTable", {
+    data: tableData,
+    dataTree: true,
+    dataTreeStartExpanded: false, // свернуто по умолчанию
+    layout: "fitColumns",
+    height: "600px",
+    columns: [
+      { title: "Наименование", field: "name", widthGrow: 2 },
+      { title: "ID объекта", field: "objectId", hozAlign: "center" },
+      { title: "Исполнитель", field: "performer" },
+      { title: "Подрядчик", field: "contractor" },
+      { title: "Тип документа", field: "docType" },
+      { title: "Дата загрузки", field: "uploadDate" },
+      { title: "Ответственный", field: "responsible" },
+    ],
+    placeholder: "Нет данных для отображения",
+  });
 });
