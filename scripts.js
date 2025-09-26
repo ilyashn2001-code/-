@@ -1,4 +1,4 @@
-// 1. Пример данных для 6 объектов
+// Данные
 const journalData = Array.from({ length: 6 }, (_, i) => ({
   objectTitle: `Объект №${i + 1}, ул. Примерная, д. ${10 + i}`,
   objectId: 100 + i,
@@ -34,7 +34,7 @@ const journalData = Array.from({ length: 6 }, (_, i) => ({
   ]
 }));
 
-// 2. Преобразование под Tabulator
+// Трансформация в Tabulator-совместимый формат
 function transformToTabulator(data) {
   return data.map(obj => ({
     id: `obj-${obj.objectId}`,
@@ -62,14 +62,13 @@ function transformToTabulator(data) {
   }));
 }
 
-// 3. Отрисовка таблицы
 document.addEventListener("DOMContentLoaded", () => {
   const tableData = transformToTabulator(journalData);
 
-  new Tabulator("#journalTable", {
+  const table = new Tabulator("#journalTable", {
     data: tableData,
     dataTree: true,
-    dataTreeStartExpanded: false,
+    dataTreeStartExpanded: true,
     layout: "fitColumns",
     height: "600px",
     placeholder: "Нет данных для отображения",
