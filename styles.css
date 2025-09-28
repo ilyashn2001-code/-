@@ -138,8 +138,9 @@ body {
 }
 
 .tabulator .tabulator-row {
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* мягкая тень */
 }
+
 
 .tabulator .tabulator-row:nth-child(even) {
   background-color: #f4f9fd;
