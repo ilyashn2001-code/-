@@ -277,11 +277,4 @@ body {
     min-width: 180px;
   }
 }
-.filters.top-bar {
-  display: flex;
-  flex-wrap: nowrap;     /* ❗️Запрет на перенос строк */
-  gap: 8px;               /* 🔄 Расстояние между фильтрами */
-  overflow-x: auto;       /* 📜 Горизонтальный скролл при переполнении */
-  padding-bottom: 4px;
-}
-
+/* Каждому фильтру — оптимальная ширина */ #filter-name { width: 200px; } #filter-objectId { width: 100px; } #filter-status { width: 100px; } #filter-district { width: 100px; } #filter-performer { width: 120px; } #filter-year { width: 80px; } #filter-start { width: 100px; } #filter-end { width: 100px; } #filter-responsible { width: 160px; } /* Чтобы всё ровно легло в строку */ .filters { display: flex; flex-wrap: wrap; align-items: center; }
