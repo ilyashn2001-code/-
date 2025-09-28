@@ -83,6 +83,7 @@ body {
   background-color: var(--sidebar-active-bg);
   font-weight: bold;
   opacity: 1;
+  position: relative;
 }
 .sidebar li.active::before {
   content: '';
