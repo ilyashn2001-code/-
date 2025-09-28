@@ -815,9 +815,10 @@ const tableDocuments = new Tabulator("#table-documents", {
   groupBy: "objectName",
   groupStartOpen: false,
   groupToggleElement: "header",
-  groupHeader: function (value, count) {
-    return `<strong style="color:#000"> ${value} (${count} ${pluralizeDocs(count)})</strong>`;
-  }
+groupHeader: function (value, count) {
+  return `<span style="color:#000; font-weight: normal;"> ${value} (${count} ${pluralizeDocs(count)})</span>`;
+}
+
 });
 
 
