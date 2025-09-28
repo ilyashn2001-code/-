@@ -189,3 +189,40 @@ body {
 #table-objects {
   flex-grow: 1;
 }
+/* Общая стилизация таблицы */
+.tabulator {
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Стили заголовка таблицы */
+.tabulator .tabulator-header {
+  background-color: #2980b9; /* насыщенно-синий */
+  color: white;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Чередование строк */
+.tabulator .tabulator-row:nth-child(even) {
+  background-color: #ecf6fc; /* светло-голубой */
+}
+
+.tabulator .tabulator-row:nth-child(odd) {
+  background-color: white;
+}
+
+/* Граница между строками */
+.tabulator .tabulator-row {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Текст в ячейках */
+.tabulator-cell {
+  padding: 8px 12px;
+  font-size: 14px;
+  color: #2c3e50;
+}
