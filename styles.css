@@ -321,3 +321,29 @@ body {
   color: white;
 }
 
+.filters input {
+  padding: 6px 10px;
+  border: 1px solid #000; /* чёрная рамка */
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-right: 8px;
+}
+
+/* Каждому фильтру — оптимальная ширина */
+#filter-name         { width: 200px; }
+#filter-objectId     { width: 100px; }
+#filter-status       { width: 100px; }
+#filter-district     { width: 100px; }
+#filter-performer    { width: 120px; }
+#filter-year         { width: 80px; }
+#filter-start        { width: 100px; }
+#filter-end          { width: 100px; }
+#filter-responsible  { width: 160px; }
+
+/* Чтобы всё ровно легло в строку */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
