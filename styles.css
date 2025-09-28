@@ -213,4 +213,47 @@ body {
 .tabulator .tabulator-tableholder {
   border-radius: 6px;
 }
+/* ✅ Меньшие стрелочки Tabulator */
+.tabulator .tabulator-tree-control {
+  font-size: 10px;
+  transform: scale(0.8);
+  margin-left: 2px;
+  line-height: 1;
+}
+
+.tabulator .tabulator-tree-control:before {
+  content: "▶";
+  display: inline-block;
+  color: #6c757d; /* muted grey */
+  font-size: 10px;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.tabulator .tabulator-tree-control.collapsed:before {
+  transform: rotate(0deg);
+}
+
+/* ✅ Светло-синяя шапка таблицы */
+.tabulator .tabulator-header {
+  background-color: #e5f0fb; /* светло-синий */
+  color: #1e1e1e;
+  font-weight: bold;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+}
+
+.tabulator .tabulator-col {
+  background-color: transparent;
+}
+
+/* Убрать адаптив */
+@media (max-width: 768px) {
+  .sidebar {
+    display: block !important;
+  }
+  .top-bar input {
+    min-width: 180px;
+  }
+}
 
