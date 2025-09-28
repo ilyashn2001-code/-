@@ -164,6 +164,11 @@ document.addEventListener("DOMContentLoaded", () => {
     placeholder: "Нет данных",
     pagination: false,
     groupBy: "objectId",
+groupHeader: function(value, count, data) {
+  const objectName = data[0]?.name?.split("📄 ")[1]?.split("(")?.[0] || `Объект ${value}`;
+  return `<span style="margin-left: 6px;">${objectName} (${count} документа)</span>`;
+},
+
   });
 
   // Переключение вкладок
