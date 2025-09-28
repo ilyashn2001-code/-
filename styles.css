@@ -347,3 +347,28 @@ body {
   flex-wrap: wrap;
   align-items: center;
 }
+
+
+
+/* ✅ Стилизация заголовков столбцов */
+.tabulator .tabulator-col,
+.tabulator .tabulator-col .tabulator-col-content {
+  background-color: #e1efff !important; /* светло-синий фон */
+  color: #111827;
+  font-weight: 600;
+  font-size: 14px;
+  border-right: 1px solid #ccc;
+}
+
+/* Убираем серый фон всей шапки */
+.tabulator .tabulator-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid #ccc;
+}
+.tabulator .tabulator-col:first-child .tabulator-col-content {
+  border-top-left-radius: 6px;
+}
+
+.tabulator .tabulator-col:last-child .tabulator-col-content {
+  border-top-right-radius: 6px;
+}
