@@ -4,6 +4,7 @@
   --sidebar-bg: #1e2a3a;
   --sidebar-text: white;
   --sidebar-active-bg: #2c3e50;
+  --sidebar-active-border: #1e88e5;
   --accent: #1e88e5;
   --accent-hover: #1565c0;
   --border-color: #ccc;
@@ -15,8 +16,8 @@ body.light {
   --text-color: #222;
   --sidebar-bg: #ecf0f1;
   --sidebar-text: #2c3e50;
-  --sidebar-active-border: #3498db;
   --sidebar-active-bg: rgba(0, 0, 0, 0.05);
+  --sidebar-active-border: #3498db;
   --accent: #3498db;
 }
 
@@ -25,8 +26,8 @@ body.dark {
   --text-color: #ecf0f1;
   --sidebar-bg: #1c2431;
   --sidebar-text: #ecf0f1;
+  --sidebar-active-bg: rgba(255, 255, 255, 0.07);
   --sidebar-active-border: #70a1ff;
-  --sidebar-active-bg: rgba(255,255,255,0.07);
   --accent: #70a1ff;
 }
 
@@ -48,21 +49,24 @@ body {
   width: 190px;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
- padding: 20px 16px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
 }
+
 .sidebar h2 {
-  font-size: 16px;       /* 👈 Чуть меньше шрифт */
-  margin-bottom: 20px;   /* 👈 Меньше отступ снизу */
+  font-size: 16px;
+  margin-bottom: 20px;
   font-weight: 600;
   color: var(--sidebar-text);
 }
+
 .sidebar ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .sidebar li {
   font-size: 14.5px;
   margin-bottom: 10px;
@@ -76,15 +80,18 @@ body {
   transition: background 0.2s ease, border-color 0.2s ease;
   position: relative;
 }
+
 .sidebar li:hover {
-  background-color: rgba(255,255,255,0.04);
+  background-color: rgba(255, 255, 255, 0.04);
 }
+
 .sidebar li.active {
   background-color: var(--sidebar-active-bg);
   font-weight: bold;
   opacity: 1;
   position: relative;
 }
+
 .sidebar li.active::before {
   content: '';
   position: absolute;
@@ -95,6 +102,12 @@ body {
   background-color: var(--sidebar-active-border);
   border-radius: 3px 0 0 3px;
 }
+
+/* 👇 Активная иконка — голубая */
+.sidebar li.active i {
+  color: var(--accent);
+}
+
 
 /* === Контент === */
 .main-content {
