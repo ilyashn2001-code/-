@@ -277,3 +277,6 @@ body {
   transform: rotate(0deg);
 }
 
+.header {
+  padding-top: 20px;
+}
