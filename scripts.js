@@ -192,6 +192,35 @@ document.getElementById("themeToggle").addEventListener("click", () => {
   localStorage.setItem("theme", isDark ? "light" : "dark");
 });
 
+// 📌 Фильтры для вкладки "Реестр объектов"
+document.getElementById("filter-name").addEventListener("input", function () {
+  tableObjects.setFilter("name", "like", this.value);
+});
+document.getElementById("filter-objectId").addEventListener("input", function () {
+  tableObjects.setFilter("objectId", "like", this.value);
+});
+document.getElementById("filter-status").addEventListener("input", function () {
+  tableObjects.setFilter("status", "like", this.value); // ⚠️ Поля status в колонках нет
+});
+document.getElementById("filter-district").addEventListener("input", function () {
+  tableObjects.setFilter("district", "like", this.value);
+});
+document.getElementById("filter-performer").addEventListener("input", function () {
+  tableObjects.setFilter("performer", "like", this.value);
+});
+document.getElementById("filter-year").addEventListener("input", function () {
+  tableObjects.setFilter("year", "like", this.value);
+});
+document.getElementById("filter-start").addEventListener("input", function () {
+  tableObjects.setFilter("startDate", "like", this.value);
+});
+document.getElementById("filter-end").addEventListener("input", function () {
+  tableObjects.setFilter("endDate", "like", this.value);
+});
+document.getElementById("filter-responsible").addEventListener("input", function () {
+  tableObjects.setFilter("responsible", "like", this.value);
+});
+
   
   // Фильтрация объектов
   const objectFilterInputs = document.querySelectorAll("#tab-objects .top-bar input");
