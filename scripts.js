@@ -1,92 +1,92 @@
-// 📁 Данные: Объекты с вложенными работами
+// 📁 Данные: Объекты
 const objectData = [
-    {
-        "id": 1,
-        "name": "Дворовая территория по адресу: Путевой пр. 38",
-        "objectId": "1004466",
-        "oghId": "403405",
-        "year": 2024,
-        "district": "СВАО",
-        "performer": "АД",
-        "responsible": "Андреев Ю.А",
-        "startDate": "15.04.2024",
-        "endDate": "25.08.2024",
-        "progress": "100",
-        "_children": [
-            {
-                "name": "Ремонт покрытия асфальтобетонного проезда в рамках благоустройства территории",
-                "objectId": "1004466",
-                "oghId": "403405",
-                "year": 2024,
-                "district": "СВАО",
-                "performer": "АД",
-                "responsible": "Андреев Ю.А",
-                "startDate": "15.04.2024",
-                "endDate": "25.04.2024",
-                "progress": "100"
-            },
-            {
-                "name": "Устройство покрытия асфальтобетонного проезда в рамках благоустройства территории",
-                "objectId": "1004466",
-                "oghId": "403405",
-                "year": 2024,
-                "district": "СВАО",
-                "performer": "АД",
-                "responsible": "Андреев Ю.А",
-                "startDate": "25.04.2024",
-                "endDate": "11.05.2024",
-                "progress": "100"
-            },
-            {
-                "name": "Ремонт покрытия асфальтобетонного тротуара в рамках благоустройства территории",
-                "objectId": "1004466",
-                "oghId": "403405",
-                "year": 2024,
-                "district": "СВАО",
-                "performer": "АД",
-                "responsible": "Андреев Ю.А",
-                "startDate": "11.05.2024",
-                "endDate": "28.05.2024",
-                "progress": "100"
-            },
-            {
-                "name": "Замена дорожного бортового камня в рамках благоустройства территории",
-                "objectId": "1004466",
-                "oghId": "403405",
-                "year": 2024,
-                "district": "СВАО",
-                "performer": "АД",
-                "responsible": "Андреев Ю.А",
-                "startDate": "28.05.2024",
-                "endDate": "15.06.2024",
-                "progress": "100"
-            },
-            {
-                "name": "Устройство дорожного бортового камня в рамках благоустройства территории",
-                "objectId": "1004466",
-                "oghId": "403405",
-                "year": 2024,
-                "district": "СВАО",
-                "performer": "АД",
-                "responsible": "Андреев Ю.А",
-                "startDate": "15.06.2024",
-                "endDate": "22.07.2024",
-                "progress": "100"
-            },
-            {
-                "name": "Ремонт покрытия асфальтобетонного автопарковки в рамках благоустройства территории",
-                "objectId": "1004466",
-                "oghId": "403405",
-                "year": 2024,
-                "district": "СВАО",
-                "performer": "АД",
-                "responsible": "Андреев Ю.А",
-                "startDate": "22.07.2024",
-                "endDate": "25.08.2024",
-                "progress": "100"
-            },
-        ]
-    }
+  {
+    id: 1,
+    name: "Дворовая территория по адресу: Путевой пр. 38",
+    objectId: "1004466",
+    oghId: "403405",
+    year: 2024,
+    district: "СВАО",
+    performer: "АД",
+    responsible: "Андреев Ю.А",
+    startDate: "15.04.2024",
+    endDate: "25.08.2024",
+    progress: "100",
+    _children: [
+      {
+        name: "Ремонт покрытия асфальтобетонного проезда в рамках благоустройства территории",
+        objectId: "1004466",
+        oghId: "403405",
+        year: 2024,
+        district: "СВАО",
+        performer: "АД",
+        responsible: "Андреев Ю.А",
+        startDate: "15.04.2024",
+        endDate: "25.04.2024",
+        progress: "100",
+      },
+      {
+        name: "Устройство покрытия асфальтобетонного проезда в рамках благоустройства территории",
+        objectId: "1004466",
+        oghId: "403405",
+        year: 2024,
+        district: "СВАО",
+        performer: "АД",
+        responsible: "Андреев Ю.А",
+        startDate: "25.04.2024",
+        endDate: "11.05.2024",
+        progress: "100",
+      },
+      {
+        name: "Ремонт покрытия асфальтобетонного тротуара в рамках благоустройства территории",
+        objectId: "1004466",
+        oghId: "403405",
+        year: 2024,
+        district: "СВАО",
+        performer: "АД",
+        responsible: "Андреев Ю.А",
+        startDate: "11.05.2024",
+        endDate: "28.05.2024",
+        progress: "100",
+      },
+      {
+        name: "Замена дорожного бортового камня в рамках благоустройства территории",
+        objectId: "1004466",
+        oghId: "403405",
+        year: 2024,
+        district: "СВАО",
+        performer: "АД",
+        responsible: "Андреев Ю.А",
+        startDate: "28.05.2024",
+        endDate: "15.06.2024",
+        progress: "100",
+      },
+      {
+        name: "Устройство дорожного бортового камня в рамках благоустройства территории",
+        objectId: "1004466",
+        oghId: "403405",
+        year: 2024,
+        district: "СВАО",
+        performer: "АД",
+        responsible: "Андреев Ю.А",
+        startDate: "15.06.2024",
+        endDate: "22.07.2024",
+        progress: "100",
+      },
+      {
+        name: "Ремонт покрытия асфальтобетонного автопарковки в рамках благоустройства территории",
+        objectId: "1004466",
+        oghId: "403405",
+        year: 2024,
+        district: "СВАО",
+        performer: "АД",
+        responsible: "Андреев Ю.А",
+        startDate: "22.07.2024",
+        endDate: "25.08.2024",
+        progress: "100",
+      },
+    ],
+  },
 ];
 
 // 📎 Данные: Документы
@@ -99,7 +99,7 @@ const documentsData = [
     docNumber: "б/н",
     uploadDate: "22.09.2024",
     pageCount: 2,
-    sheetNum: 566
+    sheetNum: 566,
   },
   {
     id: "doc-110628-2",
@@ -109,71 +109,23 @@ const documentsData = [
     docNumber: "829413ГТ",
     uploadDate: "03.10.2019",
     pageCount: 2,
-    sheetNum: 568
-  }
+    sheetNum: 568,
+  },
 ];
-
-const objectFilterFields = [
-  { id: "filter-name", field: "name" },
-  { id: "filter-objectId", field: "objectId" },
-  { id: "filter-oghId", field: "oghId" },
-  { id: "filter-year", field: "year" },
-  { id: "filter-district", field: "district" },
-  { id: "filter-performer", field: "performer" },
-  { id: "filter-responsible", field: "responsible" },
-  { id: "filter-status", field: "status" },
-  { id: "filter-start", field: "startDate" },
-  { id: "filter-end", field: "endDate" },
-];
-
-document.addEventListener("DOMContentLoaded", () => {
-  const tableObjects = new Tabulator("#table-objects", {
-    data: objectData,
-    layout: "fitColumns",
-    placeholder: "Нет данных",
-    dataTree: true,
-    dataTreeStartExpanded: false,
-    dataTreeChildField: "_children",
-    headerSort: false,
-    autoResize: true,
-    responsiveLayout: "hide",
-    height: "100%", // ⬅️ адаптивная высота
-    columns: objectColumns,
-  });
-
-  objectFilterFields.forEach(({ id, field }) => {
-    const input = document.getElementById(id);
-    if (input) {
-      input.addEventListener("input", () => {
-        const filters = objectFilterFields
-          .map(({ id, field }) => {
-            const value = document.getElementById(id).value.trim();
-            return value ? { field, type: "like", value } : null;
-          })
-          .filter(Boolean);
-        tableObjects.setFilter(filters);
-      });
-    }
-  });
-});
-
-
 
 // 📋 Колонки объектов
 const objectColumns = [
-  { title: "Наименование", field: "name", widthGrow: 2 },
+  { title: "Наименование", field: "name", widthGrow: 2.5 },
   { title: "ID объекта", field: "objectId" },
   { title: "ID ОГХ", field: "oghId" },
   { title: "Год", field: "year" },
   { title: "Округ", field: "district" },
   { title: "Исполнитель", field: "performer" },
   { title: "Ответственный", field: "responsible" },
-  { title: "Статус", field: "status" },
-  { title: "Начало", field: "startDate" },
-  { title: "Окончание", field: "endDate" },
-  { title: "Прогресс", field: "progress" },
+  { title: "Дата начала", field: "startDate" },
+  { title: "Дата окончания", field: "endDate" },
+  { title: "% Завершения", field: "progress" },
 ];
-
 
 // 📋 Колонки документов
 const documentColumns = [
@@ -182,12 +134,13 @@ const documentColumns = [
   { title: "Дата", field: "uploadDate" },
   { title: "Тип", field: "docType" },
   { title: "ID объекта", field: "objectId" },
-  { title: "Листов", field: "pageCount" },
-  { title: "Лист №", field: "sheetNum" }
+  { title: "Кол-во листов", field: "pageCount" },
+  { title: "Лист №", field: "sheetNum" },
 ];
 
+// 🚀 Основной запуск
 document.addEventListener("DOMContentLoaded", () => {
-  // 📁 Реестр объектов
+  // Инициализация таблицы объектов
   const tableObjects = new Tabulator("#table-objects", {
     data: objectData,
     layout: "fitColumns",
@@ -199,21 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
     dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>",
     dataTreeExpandElement: "<span style='margin-right:6px;'>▶</span>",
     headerSort: false,
-    columns: [
-      { title: "Наименование", field: "name", widthGrow: 2.5 },
-      { title: "ID объекта", field: "objectId" },
-      { title: "ID ОГХ", field: "oghId" },
-      { title: "Год", field: "year" },
-      { title: "Округ", field: "district" },
-      { title: "Исполнитель", field: "performer" },
-      { title: "Ответственный", field: "responsible" },
-      { title: "Дата начала", field: "startDate" },
-      { title: "Дата окончания", field: "endDate" },
-      { title: "% Завершения", field: "progress" },
-    ],
+    columns: objectColumns,
   });
 
-  // 📎 Реестр документов
+  // Инициализация таблицы документов
   const tableDocuments = new Tabulator("#table-documents", {
     data: documentsData,
     columns: documentColumns,
@@ -221,60 +163,31 @@ document.addEventListener("DOMContentLoaded", () => {
     height: 500,
     placeholder: "Нет данных",
     pagination: false,
-    groupBy: "objectId"
+    groupBy: "objectId",
   });
 
-  // 🔁 Переключение вкладок
+  // Переключение вкладок
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-      document.querySelectorAll(".tab-section").forEach(tab => tab.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".tab-section").forEach((tab) => tab.classList.remove("active"));
       btn.classList.add("active");
       document.getElementById(btn.dataset.tab).classList.add("active");
     });
   });
 
-  // 🧾 Объявление переменных фильтров (проверь наличие input'ов в HTML)
-  const filterName = document.getElementById("filter-name");
-  const filterObjectId = document.getElementById("filter-objectId");
-  const filterStatus = document.getElementById("filter-status");
-  const filterDistrict = document.getElementById("filter-district");
-  const filterPerformer = document.getElementById("filter-performer");
-  const filterYear = document.getElementById("filter-year");
-  const filterStart = document.getElementById("filter-start");
-  const filterEnd = document.getElementById("filter-end");
-
-  // 🔍 Фильтрация объектов
+  // Фильтрация объектов
   const objectFilterInputs = document.querySelectorAll("#tab-objects .top-bar input");
-  objectFilterInputs.forEach(input => {
+  objectFilterInputs.forEach((input) => {
     input.addEventListener("input", () => {
-      const filters = [];
-
-      if (filterName?.value) filters.push({ field: "name", type: "like", value: filterName.value });
-      if (filterObjectId?.value) filters.push({ field: "objectId", type: "like", value: filterObjectId.value });
-      if (filterStatus?.value) filters.push({ field: "status", type: "like", value: filterStatus.value });
-      if (filterDistrict?.value) filters.push({ field: "district", type: "like", value: filterDistrict.value });
-      if (filterPerformer?.value) filters.push({ field: "performer", type: "like", value: filterPerformer.value });
-      if (filterYear?.value) filters.push({ field: "year", type: "like", value: filterYear.value });
-      if (filterStart?.value) filters.push({ field: "startDate", type: "like", value: filterStart.value });
-      if (filterEnd?.value) filters.push({ field: "endDate", type: "like", value: filterEnd.value });
-
+      const filters = [...objectFilterInputs]
+        .map((el) => {
+          const value = el.value.trim();
+          const field = el.id.replace("filter-", "");
+          return value ? { field, type: "like", value } : null;
+        })
+        .filter(Boolean);
       tableObjects.setFilter(filters);
-    });
-  });
-});
-
-
-  // 🔍 Фильтры документов
-  const docFilterInputs = document.querySelectorAll("#tab-documents .top-bar input");
-  docFilterInputs.forEach(input => {
-    input.addEventListener("input", () => {
-      const [name, number, date] = [...docFilterInputs].map(i => i.value);
-      tableDocuments.setFilter([
-        { field: "name", type: "like", value: name },
-        { field: "docNumber", type: "like", value: number },
-        { field: "uploadDate", type: "like", value: date }
-      ]);
     });
   });
 });
