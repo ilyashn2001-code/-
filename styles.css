@@ -1,12 +1,11 @@
 :root {
-  --bg-color: #f4f4f4;
-  --text-color: #222;
-  --sidebar-bg: #1c2431;
-  --sidebar-text: #ecf0f1;
-  --sidebar-active-border: #3498db;
-  --sidebar-active-bg: rgba(255, 255, 255, 0.05);
-  --accent: #3498db;
-  --accent-hover: #2980b9;
+  --bg-color: #f7f9fc;
+  --text-color: #1e2a3a;
+  --sidebar-bg: #1e2a3a;
+  --sidebar-text: white;
+  --sidebar-active-bg: #2c3e50;
+  --accent: #1e88e5;
+  --accent-hover: #1565c0;
   --border-color: #ccc;
   --font-main: 'Montserrat', sans-serif;
 }
