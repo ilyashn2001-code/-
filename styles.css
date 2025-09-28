@@ -315,3 +315,8 @@ body {
 .tabulator .tabulator-col:last-child .tabulator-col-content {
   border-top-right-radius: 6px;
 }
+.tabulator .tabulator-group .tabulator-arrow {
+  margin-left: 4px;
+  margin-right: 6px;
+  font-size: 10px;
+}
