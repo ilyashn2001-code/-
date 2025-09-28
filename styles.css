@@ -46,10 +46,10 @@ body {
 
 /* === САЙДБАР === */
 .sidebar {
-  width: 180px;
+  width: 220px;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
-  padding: 24px 16px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
 }
