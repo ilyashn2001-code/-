@@ -57,9 +57,14 @@
     </div>
 
   <!-- Tab: Документы -->
-    <div id="tab-documents" class="tab-section">
-      <div id="table-documents"></div>
-    </div>
+   <div id="tab-documents" class="tab-section">
+  <div class="filters top-bar">
+    <input type="text" id="filter-doc-name" placeholder="Наименование документа">
+    <input type="text" id="filter-doc-number" placeholder="Номер">
+    <input type="text" id="filter-doc-date" placeholder="Дата">
+  </div>
+  <div id="table-documents"></div>
+</div>
   </main>
 </div>
 
@@ -781,8 +786,18 @@ groupHeader: function (value, count) {
     ${value} (${count} ${pluralizeDocs(count)})
   </span>`;
 }
+});
+// 🔍 Фильтрация таблицы документов
+document.getElementById("filter-doc-name").addEventListener("input", e => {
+  tableDocuments.setFilter("name", "like", e.target.value);
+});
 
+document.getElementById("filter-doc-number").addEventListener("input", e => {
+  tableDocuments.setFilter("docNumber", "like", e.target.value);
+});
 
+document.getElementById("filter-doc-date").addEventListener("input", e => {
+  tableDocuments.setFilter("uploadDate", "like", e.target.value);
 });
 
 
