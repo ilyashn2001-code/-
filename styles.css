@@ -271,9 +271,4 @@ body {
   overflow-x: auto;       /* 📜 Горизонтальный скролл при переполнении */
   padding-bottom: 4px;
 }
-.filters.top-bar input {
-  flex-shrink: 0;         /* 🚫 Не сжимать */
-  width: fit-content;
-  min-width: 80px;
-  white-space: nowrap;
-}
+
