@@ -8,6 +8,13 @@
   --font-main: 'Montserrat', sans-serif;
 }
 
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
 body.light {
   --bg-color: #ffffff;
   --text-color: #222;
