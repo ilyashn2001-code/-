@@ -48,13 +48,15 @@ body {
   width: 180px;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
-  padding: 30px 20px;
+ padding: 20px 16px;
   display: flex;
   flex-direction: column;
 }
 .sidebar h2 {
-  font-size: 17px;
-  margin-bottom: 24px;
+  font-size: 16px;       /* 👈 Чуть меньше шрифт */
+  margin-bottom: 20px;   /* 👈 Меньше отступ снизу */
+  font-weight: 600;
+  color: var(--sidebar-text);
 }
 .sidebar ul {
   list-style: none;
