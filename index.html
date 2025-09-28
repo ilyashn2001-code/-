@@ -3,78 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <title>Журналы</title>
- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Tabulator CSS -->
+  <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background-color: #f4f6f8;
-    }
-    .app-container {
-      display: flex;
-      height: 100vh;
-    }
-    .sidebar {
-      width: 220px;
-      background-color: #2c3e50;
-      color: white;
-      padding: 20px;
-    }
-    .sidebar h2 { font-size: 18px; margin-bottom: 20px; }
-    .sidebar ul { list-style: none; padding: 0; }
-    .sidebar li { margin: 10px 0; cursor: pointer; }
-    .sidebar li.active { font-weight: bold; }
-    .main-content {
-      flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 15px;
-    }
-    .tab-btn {
-      background-color: #3498db;
-      color: white;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .tab-btn.active {
-      background-color: #2980b9;
-    }
-    .tab-section {
-      display: none;
-    }
-    .tab-section.active {
-      display: block;
-    }
-  </style>
 </head>
+  
 <body>
 <div class="app-container">
+  <!-- Sidebar -->
   <aside class="sidebar">
     <h2>Intellectual Journal</h2>
     <ul>
-     <li><i class="fas fa-tachometer-alt"></i> Дашборд</li>
-<li><i class="fas fa-building"></i> Объекты</li>
-<li><i class="fas fa-camera"></i> Фотографии</li>
-<li class="active"><i class="fas fa-book"></i> Журналы</li>
-<li><i class="fas fa-chart-line"></i> Отчёты</li>
-
+      <li><i class="fas fa-tachometer-alt"></i> Дашборд</li>
+      <li><i class="fas fa-building"></i> Объекты</li>
+      <li><i class="fas fa-camera"></i> Фотографии</li>
+      <li class="active"><i class="fas fa-book"></i> Журналы</li>
+      <li><i class="fas fa-chart-line"></i> Отчёты</li>
     </ul>
   </aside>
 
+  
+ <!-- Main Content -->
   <main class="main-content">
     <div class="header">
       <h1>Журналы</h1>
@@ -86,21 +42,21 @@
     </div>
 
 <div id="tab-objects" class="tab-section active">
-  <div class="filters top-bar">
-    <input type="text" id="filter-name" placeholder="Наименование объекта">
-    <input type="text" id="filter-objectId" placeholder="ID объекта">
-    <input type="text" id="filter-status" placeholder="Статус">
-    <input type="text" id="filter-district" placeholder="Округ">
-    <input type="text" id="filter-performer" placeholder="Исполнитель">
-    <input type="text" id="filter-year" placeholder="Год">
-    <input type="text" id="filter-start" placeholder="Начало">
-    <input type="text" id="filter-responsible" placeholder="Ответственный">
-    <input type="text" id="filter-end" placeholder="Окончание">
-  </div>
+      <div class="filters top-bar">
+        <input type="text" id="filter-name" placeholder="Наименование объекта">
+        <input type="text" id="filter-objectId" placeholder="ID объекта">
+        <input type="text" id="filter-status" placeholder="Статус">
+        <input type="text" id="filter-district" placeholder="Округ">
+        <input type="text" id="filter-performer" placeholder="Исполнитель">
+        <input type="text" id="filter-year" placeholder="Год">
+        <input type="text" id="filter-start" placeholder="Начало">
+        <input type="text" id="filter-responsible" placeholder="Ответственный">
+        <input type="text" id="filter-end" placeholder="Окончание">
+      </div>
+      <div id="table-objects"></div>
+    </div>
 
-  <div id="table-objects"></div>
-</div>
-    
+  <!-- Tab: Документы -->
     <div id="tab-documents" class="tab-section">
       <div id="table-documents"></div>
     </div>
