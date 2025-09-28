@@ -1,65 +1,51 @@
-/* 🎨 Переменные */
 :root {
   --bg-color: #f4f4f4;
   --text-color: #222;
-  --sidebar-bg: #1e293b;
+  --sidebar-bg: #1c2431;
   --sidebar-text: #ecf0f1;
-  --sidebar-active-bg: #334155;
+  --sidebar-active-border: #3498db;
   --accent: #3498db;
-  --accent-hover: #2563eb;
-  --border-color: #ddd;
   --font-main: 'Montserrat', sans-serif;
 }
 
-/* Светлая тема */
 body.light {
-  --bg-color: #f4f4f4;
+  --bg-color: #ffffff;
   --text-color: #222;
   --sidebar-bg: #ecf0f1;
   --sidebar-text: #2c3e50;
-  --sidebar-active-bg: rgba(0, 0, 0, 0.06);
+  --sidebar-active-border: #3498db;
   --accent: #3498db;
-  --accent-hover: #2563eb;
 }
 
-/* Тёмная тема */
 body.dark {
   --bg-color: #1e1e2f;
   --text-color: #ecf0f1;
-  --sidebar-bg: #1e293b;
+  --sidebar-bg: #1c2431;
   --sidebar-text: #ecf0f1;
-  --sidebar-active-bg: #334155;
+  --sidebar-active-border: #70a1ff;
   --accent: #70a1ff;
-  --accent-hover: #3498db;
 }
 
-/* 📄 Общий стиль */
 body {
-  margin: 0;
-  font-family: var(--font-main);
-  background: var(--bg-color);
+  background-color: var(--bg-color);
   color: var(--text-color);
+  font-family: var(--font-main);
+  margin: 0;
 }
 
-.app-container {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
-/* 📚 Боковая панель */
+/* 📚 Боковик */
 .sidebar {
-  width: 200px; /* Уже */
+  width: 200px;
   background: var(--sidebar-bg);
-  padding: 20px 15px;
+  padding: 24px 18px;
   box-shadow: 2px 0 6px rgba(0,0,0,0.05);
   color: var(--sidebar-text);
 }
 
 .sidebar h2 {
-  font-size: 18px; /* Меньше */
-  margin-bottom: 25px;
-  color: var(--sidebar-text);
+  font-size: 17px;
+  margin-bottom: 32px;
+  font-weight: 600;
 }
 
 .sidebar ul {
@@ -69,27 +55,25 @@ body {
 }
 
 .sidebar li {
-  padding: 10px 0;
-  font-weight: 500;
+  padding: 12px 8px;
+  font-weight: 600;
+  font-size: 15px;
   color: var(--sidebar-text);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  border-radius: 4px;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.sidebar li:hover {
-  background-color: rgba(255,255,255,0.05);
+  gap: 10px;
+  border-left: 3px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .sidebar li.active {
-  background-color: var(--sidebar-active-bg);
-  color: var(--accent);
-  font-weight: 600;
+  border-left: 3px solid var(--sidebar-active-border);
+  background: rgba(255,255,255,0.05);
+  font-weight: 700;
+  color: white;
 }
+
 
 /* 📦 Контент */
 .main-content {
