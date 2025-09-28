@@ -45,7 +45,7 @@ body {
 
 /* === САЙДБАР === */
 .sidebar {
-  width: 200px;
+  width: 180px;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
   padding: 30px 20px;
