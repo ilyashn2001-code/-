@@ -280,4 +280,44 @@ body {
   outline: none;
   border-color: var(--accent);
 }
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid #d1d5db; /* светлая рамка */
+  border-radius: 9999px; /* pill-style */
+  font-size: 14px;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab-btn i {
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.tab-btn:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.tab-btn.active {
+  background-color: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.tab-btn.active i {
+  opacity: 1;
+  color: white;
+}
 
