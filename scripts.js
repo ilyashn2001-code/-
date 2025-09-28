@@ -149,8 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
     dataTree: true,
     dataTreeStartExpanded: false,
     dataTreeChildField: "_children",
-    dataTreeCollapseElement: "<span style='margin-right:6px;'>▼</span>",
-    dataTreeExpandElement: "<span style='margin-right:6px;'>▶</span>",
+    dataTreeCollapseElement: "<span style='margin-right:2px;'>▼</span>",
+    dataTreeExpandElement: "<span style='margin-right:2px;'>▶</span>",
     headerSort: false,
     columns: objectColumns,
   });
