@@ -1,36 +1,22 @@
 :root {
   --bg: #f4f6f9;
   --sidebar-bg: #1e293b;
-  --text: #1e1e1e;
+  --sidebar-text: white;
+  --sidebar-active-bg: #334155;
+  --text-color: #111827;
   --muted: #6c757d;
   --accent: #007bff;
   --accent-hover: #0056b3;
   --border-color: #ddd;
   --font-main: 'Montserrat', sans-serif;
-    --sidebar-text: white;
-  --sidebar-active-bg: #334155;
-  --text-color: #111827;
-  --bg-color: #f4f6f8;
 }
 
-.sidebar {
-  background-color: var(--sidebar-bg);
-  color: var(--sidebar-text);
-}
-
-.sidebar li.active {
-  background-color: var(--sidebar-active-bg);
-  font-weight: bold;
-  border-radius: 6px;
-  padding: 6px 10px;
-}
-
-/* 🌐 Базовая структура */
+/* 📄 Общий стиль */
 body {
   margin: 0;
   font-family: var(--font-main);
   background: var(--bg);
-  color: var(--text);
+  color: var(--text-color);
 }
 
 .app-container {
@@ -39,11 +25,13 @@ body {
   overflow: hidden;
 }
 
+/* 📚 Боковик */
 .sidebar {
   width: 240px;
   background: var(--sidebar-bg);
   padding: 20px;
   box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+  color: var(--sidebar-text);
 }
 
 .sidebar h2 {
@@ -59,25 +47,33 @@ body {
 .sidebar li {
   padding: 12px 0;
   font-weight: 600;
-  color: var(--text);
+  color: var(--sidebar-text);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .sidebar li.active {
+  background-color: var(--sidebar-active-bg);
+  border-radius: 6px;
   color: var(--accent);
+  font-weight: bold;
+  padding-left: 12px;
 }
 
+/* 📦 Контент */
 .main-content {
   flex: 1;
-  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
   overflow-y: auto;
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+  padding-top: 20px;
+  margin-bottom: 20px;
 }
 
 .header h1 {
@@ -85,14 +81,7 @@ body {
   margin: 0;
 }
 
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 22px;
-}
-
-/* 📑 Вкладки */
+/* 📌 Вкладки */
 .tabs {
   display: flex;
   gap: 10px;
@@ -144,27 +133,84 @@ body {
   border-color: var(--accent);
 }
 
-/* 📋 Таблицы */
-#tableObjects,
-#tableDocuments {
+/* 📋 Tabulator */
+.tabulator {
+  background-color: white;
   border: 1px solid var(--border-color);
-  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  padding: 5px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  overflow: hidden;
 }
 
-/* 🎯 Tabulator: пустое состояние */
+.tabulator .tabulator-header {
+  background-color: #3498db;
+  color: white;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tabulator .tabulator-header .tabulator-col {
+  padding: 10px 12px;
+}
+
+.tabulator .tabulator-row {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tabulator .tabulator-row:nth-child(even) {
+  background-color: #f4f9fd;
+}
+
+.tabulator .tabulator-row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.tabulator-cell {
+  padding: 12px 12px;
+  font-size: 15px;
+  color: #2c3e50;
+}
+
+/* 📂 Группировка */
+.tabulator-group {
+  background-color: #e1e1e1;
+  color: #333;
+  font-weight: normal;
+  padding-left: 8px;
+  font-size: 14px;
+}
+
+/* ⬇️ Стрелочки одинакового размера */
+.tabulator .tabulator-tree-control {
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.tabulator .tabulator-tree-control:before {
+  content: "▶";
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.tabulator .tabulator-tree-control.collapsed:before {
+  transform: rotate(0deg);
+}
+
+/* 📑 Плейсхолдер */
 .tabulator .tabulator-placeholder .tabulator-placeholder-contents {
   font-style: italic;
   color: var(--muted);
 }
 
-/* 🖥️ Scrollbar */
+/* 🖥 Scroll */
 .tabulator .tabulator-tableholder {
   border-radius: 6px;
 }
 
-/* 🪟 Адаптивность */
+/* 📱 Адаптив */
 @media (max-width: 768px) {
   .sidebar {
     display: none;
@@ -175,124 +221,4 @@ body {
   .top-bar input {
     min-width: 100%;
   }
-}
-.tabulator-row .tabulator-cell {
-  padding: 12px 8px; /* увеличить вертикальные отступы */
-  font-size: 15px; /* опционально — чуть крупнее шрифт */
-}
-.main-content {
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-#tab-objects {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-#table-objects {
-  flex-grow: 1;
-}
-#tab-objects {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-#table-objects {
-  flex-grow: 1;
-}
-/* Общая стилизация таблицы */
-.tabulator {
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-/* Стили заголовка таблицы */
-.tabulator .tabulator-header {
-  background-color: #2980b9; /* насыщенно-синий */
-  color: white;
-  font-weight: bold;
-  border-bottom: 1px solid #ccc;
-}
-
-/* Чередование строк */
-.tabulator .tabulator-row:nth-child(even) {
-  background-color: #ecf6fc; /* светло-голубой */
-}
-
-.tabulator .tabulator-row:nth-child(odd) {
-  background-color: white;
-}
-
-/* Граница между строками */
-.tabulator .tabulator-row {
-  border-bottom: 1px solid #e0e0e0;
-}
-
-/* Текст в ячейках */
-.tabulator-cell {
-  padding: 8px 12px;
-  font-size: 14px;
-  color: #2c3e50;
-}
-/* 📘 Заголовок таблицы */
-.tabulator .tabulator-header {
-  background-color: #3498db; /* синяя шапка */
-  color: white;
-  font-weight: bold;
-}
-
-/* 📋 Таблица */
-.tabulator {
-  background-color: white;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  border-radius: 6px;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-}
-
-/* 📄 Чередование строк */
-.tabulator .tabulator-row:nth-child(even) {
-  background-color: #f4f9fd;
-}
-.tabulator .tabulator-row:nth-child(odd) {
-  background-color: #ffffff;
-}
-
-/* ⏬ Групповые строки */
-.tabulator-group {
-  background-color: #e1e1e1;
-  color: #333;
-  font-weight: normal;
-  padding-left: 5px;
-}
-
-/* ⬇️ Иконка разворота — стрелочка вниз */
-.tabulator .tabulator-arrow {
-  border: none;
-}
-.tabulator .tabulator-tree-control {
-  font-size: 12px;
-  margin-left: 2px;
-}
-.tabulator .tabulator-tree-control:before {
-  content: "▶";
-  display: inline-block;
-  transform: rotate(90deg);
-  transition: transform 0.3s ease;
-}
-.tabulator .tabulator-tree-control.collapsed:before {
-  transform: rotate(0deg);
-}
-
-.header {
-  padding-top: 20px;
 }
