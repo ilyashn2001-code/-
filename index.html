@@ -808,31 +808,6 @@ document.getElementById("filter-doc-date").addEventListener("input", e => {
 });
 
 
-  <script>
-  const toggleBtn = document.getElementById("themeToggle");
-  const body = document.body;
-
-  // Загрузка сохранённой темы
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) {
-    body.classList.add(savedTheme);
-  } else {
-    body.classList.add("light"); // по умолчанию светлая
-  }
-
-  // Переключатель темы
-  toggleBtn.addEventListener("click", () => {
-    if (body.classList.contains("light")) {
-      body.classList.remove("light");
-      body.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      body.classList.remove("dark");
-      body.classList.add("light");
-      localStorage.setItem("theme", "light");
-    }
-  });
-</script>
 
 
 </script>
