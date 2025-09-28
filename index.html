@@ -612,14 +612,11 @@
     layout: "fitColumns",
     placeholder: "Нет данных",
     height: 655,
-    groupBy: "objectName",
-groupStartOpen: false,
-groupToggleElement: "header",
-groupHeader: function (value, count) {
-  return `<span style="margin-left: 4px; color:#000; font-weight: normal;">
-    ${value} (${count} ${pluralizeDocs(count)})
-  </span>`;
-}
+    dataTree: true,
+    dataTreeChildField: "_children",
+    dataTreeStartExpanded: false,
+ dataTreeCollapseElement: "<span style='margin-right: 3px; color: #888;'>▼</span>",
+  dataTreeExpandElement: "<span style='margin-right: 3px; color: #888;'>▶</span>"
 
     columns: [
       { title: "Наименование", field: "name", widthGrow: 2 },
@@ -787,11 +784,14 @@ const tableDocuments = new Tabulator("#table-documents", {
   height: 655,
   placeholder: "Нет документов",
   columns: documentColumns,
-dataTree: true,
-dataTreeChildField: "_documents", // 👈 обязательно!
-dataTreeStartExpanded: false,
-dataTreeCollapseElement: "<span style='margin-right: 4px; font-size: 10px; color: #888;'>▼</span>",
-dataTreeExpandElement: "<span style='margin-right: 4px; font-size: 10px; color: #888;'>▶</span>",
+  groupBy: "objectName",
+  groupStartOpen: false,
+  groupToggleElement: "header",
+groupHeader: function (value, count) {
+  return `<span style="margin-left: 4px; color:#000; font-weight: normal;">
+    ${value} (${count} ${pluralizeDocs(count)})
+  </span>`;
+}
 
 });
 // 🔍 Фильтрация таблицы документов
