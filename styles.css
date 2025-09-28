@@ -1,21 +1,43 @@
+/* 🎨 Переменные */
 :root {
-  --bg: #f4f6f9;
+  --bg-color: #f4f4f4;
+  --text-color: #222;
   --sidebar-bg: #1e293b;
-  --sidebar-text: white;
+  --sidebar-text: #ecf0f1;
   --sidebar-active-bg: #334155;
-  --text-color: #111827;
-  --muted: #6c757d;
-  --accent: #007bff;
-  --accent-hover: #0056b3;
+  --accent: #3498db;
+  --accent-hover: #2563eb;
   --border-color: #ddd;
   --font-main: 'Montserrat', sans-serif;
+}
+
+/* Светлая тема */
+body.light {
+  --bg-color: #f4f4f4;
+  --text-color: #222;
+  --sidebar-bg: #ecf0f1;
+  --sidebar-text: #2c3e50;
+  --sidebar-active-bg: rgba(0, 0, 0, 0.06);
+  --accent: #3498db;
+  --accent-hover: #2563eb;
+}
+
+/* Тёмная тема */
+body.dark {
+  --bg-color: #1e1e2f;
+  --text-color: #ecf0f1;
+  --sidebar-bg: #1e293b;
+  --sidebar-text: #ecf0f1;
+  --sidebar-active-bg: #334155;
+  --accent: #70a1ff;
+  --accent-hover: #3498db;
 }
 
 /* 📄 Общий стиль */
 body {
   margin: 0;
   font-family: var(--font-main);
-  background: var(--bg);
+  background: var(--bg-color);
   color: var(--text-color);
 }
 
@@ -25,41 +47,48 @@ body {
   overflow: hidden;
 }
 
-/* 📚 Боковик */
+/* 📚 Боковая панель */
 .sidebar {
-  width: 240px;
+  width: 200px; /* Уже */
   background: var(--sidebar-bg);
-  padding: 20px;
+  padding: 20px 15px;
   box-shadow: 2px 0 6px rgba(0,0,0,0.05);
   color: var(--sidebar-text);
 }
 
 .sidebar h2 {
-  font-size: 20px;
-  margin-bottom: 30px;
+  font-size: 18px; /* Меньше */
+  margin-bottom: 25px;
+  color: var(--sidebar-text);
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
-  padding: 12px 0;
-  font-weight: 600;
+  padding: 10px 0;
+  font-weight: 500;
   color: var(--sidebar-text);
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar li:hover {
+  background-color: rgba(255,255,255,0.05);
 }
 
 .sidebar li.active {
   background-color: var(--sidebar-active-bg);
-  border-radius: 6px;
   color: var(--accent);
-  font-weight: bold;
-  padding-left: 12px;
+  font-weight: 600;
 }
 
 /* 📦 Контент */
@@ -67,24 +96,41 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 20px;
   overflow-y: auto;
 }
 
 .header {
-  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
   margin-bottom: 20px;
 }
 
 .header h1 {
-  font-size: 26px;
+  font-size: 22px;
   margin: 0;
 }
 
+/* 🌓 Кнопка смены темы */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+}
+
 /* 📌 Вкладки */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
 
 .tab-btn {
-  padding: 10px 20px;
+  padding: 8px 16px;
   background: var(--accent);
   color: white;
   border: none;
@@ -92,6 +138,10 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s ease;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .tab-btn.active {
@@ -114,33 +164,45 @@ body {
   margin-bottom: 15px;
 }
 
+.top-bar input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 13px;
+  background: #fff;
+  min-width: auto;
+  width: fit-content;
+  max-width: 220px;
+}
 
 .top-bar input:focus {
   outline: none;
   border-color: var(--accent);
 }
 
-/* 📋 Tabulator */
+/* 📋 Таблица Tabulator */
 .tabulator {
   background-color: white;
   border: 1px solid var(--border-color);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   font-family: var(--font-main);
-  font-size: 14px;
+  font-size: 13px;
   overflow: hidden;
 }
 
-
-
 .tabulator .tabulator-header .tabulator-col {
-  padding: 10px 12px;
+  padding: 8px 10px;
+  background-color: #e1efff !important; /* светло-синий фон */
+  color: #111827;
+  font-weight: 600;
+  font-size: 13px;
+  border-right: 1px solid #ccc;
 }
 
 .tabulator .tabulator-row {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* мягкая тень */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-
 
 .tabulator .tabulator-row:nth-child(even) {
   background-color: #f4f9fd;
@@ -151,8 +213,8 @@ body {
 }
 
 .tabulator-cell {
-  padding: 12px 12px;
-  font-size: 15px;
+  padding: 10px 10px;
+  font-size: 13px;
   color: #2c3e50;
 }
 
@@ -162,23 +224,16 @@ body {
   color: #333;
   font-weight: normal;
   padding-left: 8px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
-/* ⬇️ Стрелочки одинакового размера (уменьшенные) */
-
-
-/* 📑 Плейсхолдер */
-.tabulator .tabulator-placeholder .tabulator-placeholder-contents {
-  font-style: italic;
-  color: var(--muted);
+.tabulator .tabulator-group .tabulator-arrow {
+  margin-left: 4px;
+  margin-right: 6px;
+  font-size: 10px;
 }
 
-/* 🖥 Scroll */
-.tabulator .tabulator-tableholder {
-  border-radius: 6px;
-}
-/* ✅ Меньшие стрелочки Tabulator */
+/* Стрелочки Tabulator */
 .tabulator .tabulator-tree-control {
   font-size: 10px;
   transform: scale(0.8);
@@ -189,7 +244,7 @@ body {
 .tabulator .tabulator-tree-control:before {
   content: "▶";
   display: inline-block;
-  color: #6c757d; /* muted grey */
+  color: #6c757d;
   font-size: 10px;
   transform: rotate(90deg);
   transition: transform 0.3s ease;
@@ -199,125 +254,12 @@ body {
   transform: rotate(0deg);
 }
 
-/* ✅ Светло-синяя шапка таблицы */
-
-.tabulator .tabulator-col {
-  background-color: transparent;
-}
-
-/* Убрать адаптив */
+/* Мобилки */
 @media (max-width: 768px) {
   .sidebar {
-    display: block !important;
+    width: 100%;
   }
   .top-bar input {
     min-width: 180px;
   }
-}
-/* 🎯 Общие фильтры (обе вкладки) */
-.top-bar input {
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid black; /* черная рамка */
-  font-size: 14px;
-  background: #fff;
-  min-width: auto;           /* убрали фиксированную ширину */
-  width: fit-content;        /* по содержимому */
-  max-width: 220px;
-}
-
-/* Чтобы поля не прыгали */
-.filters.top-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.top-bar input:focus {
-  outline: none;
-  border-color: var(--accent);
-}
-.tabs {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.tab-btn i {
-  font-size: 14px;
-  opacity: 0.6;
-}
-
-.tab-btn:hover {
-  background-color: #f3f4f6;
-  border-color: #9ca3af;
-}
-
-.tab-btn.active {
-  background-color: #2563eb;
-  color: white;
-  border-color: #2563eb;
-}
-
-.tab-btn.active i {
-  opacity: 1;
-  color: white;
-}
-
-.filters input {
-  padding: 6px 10px;
-  border: 1px solid #000; /* чёрная рамка */
-  border-radius: 4px;
-  font-size: 14px;
-  margin-bottom: 10px;
-  margin-right: 8px;
-}
-
-/* Каждому фильтру — оптимальная ширина */
-#filter-name         { width: 200px; }
-#filter-objectId     { width: 100px; }
-#filter-status       { width: 100px; }
-#filter-district     { width: 100px; }
-#filter-performer    { width: 120px; }
-#filter-year         { width: 80px; }
-#filter-start        { width: 100px; }
-#filter-end          { width: 100px; }
-#filter-responsible  { width: 160px; }
-
-/* Чтобы всё ровно легло в строку */
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-
-
-/* ✅ Стилизация заголовков столбцов */
-.tabulator .tabulator-col,
-.tabulator .tabulator-col .tabulator-col-content {
-  background-color: #e1efff !important; /* светло-синий фон */
-  color: #111827;
-  font-weight: 600;
-  font-size: 14px;
-  border-right: 1px solid #ccc;
-}
-
-/* Убираем серый фон всей шапки */
-.tabulator .tabulator-header {
-  background-color: transparent !important;
-  border-bottom: 1px solid #ccc;
-}
-.tabulator .tabulator-col:first-child .tabulator-col-content {
-  border-top-left-radius: 6px;
-}
-
-.tabulator .tabulator-col:last-child .tabulator-col-content {
-  border-top-right-radius: 6px;
-}
-.tabulator .tabulator-group .tabulator-arrow {
-  margin-left: 4px;
-  margin-right: 6px;
-  font-size: 10px;
 }
