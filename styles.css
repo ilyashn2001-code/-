@@ -158,3 +158,69 @@ body {
     min-width: 180px;
   }
 }
+/* 🔧 Унификация шапки таблицы */
+.tabulator .tabulator-header {
+  background-color: #e1efff;
+  border-bottom: 1px solid #ccc;
+}
+
+.tabulator .tabulator-col {
+  background-color: #e1efff;
+  color: #111827;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 12px !important;
+  border-right: 1px solid #ccc;
+}
+
+.tabulator .tabulator-col .tabulator-col-content {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 🔽 Стрелочки */
+.tabulator .tabulator-tree-control {
+  font-size: 12px;
+  transform: scale(0.9);
+  margin-left: 6px;
+  line-height: 1;
+  color: #6c757d;
+}
+
+.tabulator .tabulator-tree-control:before {
+  content: "▶";
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+.tabulator .tabulator-tree-control.collapsed:before {
+  transform: rotate(0deg);
+}
+
+/* 🧱 Стиль ячеек */
+.tabulator-cell {
+  padding: 10px 12px !important;
+  font-size: 14px;
+  color: #2c3e50;
+  border-right: 1px solid #eee;
+}
+
+.tabulator-row:nth-child(even) {
+  background-color: #f4f9fd;
+}
+
+.tabulator-row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* ➕ Скругления */
+.tabulator .tabulator-col:first-child .tabulator-col-content {
+  border-top-left-radius: 6px;
+}
+
+.tabulator .tabulator-col:last-child .tabulator-col-content {
+  border-top-right-radius: 6px;
+  border-right: none;
+}
