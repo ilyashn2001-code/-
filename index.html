@@ -816,7 +816,7 @@ const tableDocuments = new Tabulator("#table-documents", {
   groupStartOpen: false,
   groupToggleElement: "header",
   groupHeader: function (value, count) {
-    return `<strong style="color:#000">🏠 ${value} (${count} ${pluralizeDocs(count)})</strong>`;
+    return `<strong style="color:#000"> ${value} (${count} ${pluralizeDocs(count)})</strong>`;
   }
 });
 
