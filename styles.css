@@ -256,4 +256,28 @@ body {
     min-width: 180px;
   }
 }
+/* 🎯 Общие фильтры (обе вкладки) */
+.top-bar input {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid black; /* черная рамка */
+  font-size: 14px;
+  background: #fff;
+  min-width: auto;           /* убрали фиксированную ширину */
+  width: fit-content;        /* по содержимому */
+  max-width: 220px;
+}
+
+/* Чтобы поля не прыгали */
+.filters.top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.top-bar input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
 
