@@ -226,3 +226,54 @@ body {
   font-size: 14px;
   color: #2c3e50;
 }
+/* 📘 Заголовок таблицы */
+.tabulator .tabulator-header {
+  background-color: #3498db; /* синяя шапка */
+  color: white;
+  font-weight: bold;
+}
+
+/* 📋 Таблица */
+.tabulator {
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+/* 📄 Чередование строк */
+.tabulator .tabulator-row:nth-child(even) {
+  background-color: #f4f9fd;
+}
+.tabulator .tabulator-row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+/* ⏬ Групповые строки */
+.tabulator-group {
+  background-color: #e1e1e1;
+  color: #333;
+  font-weight: normal;
+  padding-left: 5px;
+}
+
+/* ⬇️ Иконка разворота — стрелочка вниз */
+.tabulator .tabulator-arrow {
+  border: none;
+}
+.tabulator .tabulator-tree-control {
+  font-size: 12px;
+  margin-left: 2px;
+}
+.tabulator .tabulator-tree-control:before {
+  content: "▶";
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+.tabulator .tabulator-tree-control.collapsed:before {
+  transform: rotate(0deg);
+}
+
