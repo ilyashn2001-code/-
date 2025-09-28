@@ -1,11 +1,13 @@
 :root {
   --bg: #f4f6f9;
+  --sidebar-bg: #1e293b;
+  --sidebar-text: white;
+  --sidebar-active-bg: #334155;
   --text-color: #111827;
   --muted: #6c757d;
   --accent: #007bff;
   --accent-hover: #0056b3;
-  --border-color: #ccc;
-  --header-bg: #e1efff;
+  --border-color: #ddd;
   --font-main: 'Montserrat', sans-serif;
 }
 
@@ -17,6 +19,66 @@ body {
   color: var(--text-color);
 }
 
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--sidebar-bg);
+  padding: 20px;
+  box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+  color: var(--sidebar-text);
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 12px 0;
+  font-weight: 600;
+  color: var(--sidebar-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar li.active {
+  background-color: var(--sidebar-active-bg);
+  border-radius: 6px;
+  color: var(--accent);
+  font-weight: bold;
+  padding-left: 12px;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 26px;
+  margin: 0;
+}
+
+/* 🔘 Вкладки */
 .tabs {
   display: flex;
   gap: 10px;
@@ -25,140 +87,65 @@ body {
 
 .tab-btn {
   padding: 8px 16px;
-  background-color: transparent;
-  border: 1px solid #d1d5db;
+  background-color: #2563eb;
+  border: 1px solid #2563eb;
   border-radius: 9999px;
   font-size: 14px;
-  color: #1f2937;
+  color: white;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-.tab-btn.active {
-  background-color: var(--accent);
-  color: white;
-  border-color: var(--accent);
-}
-
 .tab-btn:hover {
-  background-color: #f3f4f6;
-  border-color: #9ca3af;
+  background-color: #1e40af;
 }
 
-/* 📋 Таблицы Tabulator */
-.tabulator {
-  font-family: var(--font-main);
-  font-size: 14px;
-  background-color: white;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-/* ✅ Шапка */
-.tabulator .tabulator-header {
-  background-color: transparent;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.tabulator .tabulator-col,
-.tabulator .tabulator-col .tabulator-col-content {
-  background-color: var(--header-bg);
-  color: var(--text-color);
-  font-weight: 600;
-  font-size: 14px;
-  border-right: 1px solid var(--border-color);
-  padding: 10px 12px;
-}
-
-.tabulator .tabulator-col:first-child .tabulator-col-content {
-  border-top-left-radius: 6px;
-}
-.tabulator .tabulator-col:last-child .tabulator-col-content {
-  border-top-right-radius: 6px;
-  border-right: none;
-}
-
-/* 🧩 Стрелочки Tabulator */
-.tabulator .tabulator-tree-control {
-  font-size: 10px;
-  transform: scale(0.8);
-  margin-left: 4px;
-  line-height: 1;
-  color: var(--muted);
-}
-
-.tabulator .tabulator-tree-control:before {
-  content: "▶";
-  display: inline-block;
-  transform: rotate(90deg);
-  transition: transform 0.2s ease;
-}
-
-.tabulator .tabulator-tree-control.collapsed:before {
-  transform: rotate(0deg);
-}
-
-/* 📄 Строки таблиц */
-.tabulator .tabulator-row {
-  border-bottom: 1px solid #e0e0e0;
-}
-.tabulator .tabulator-row:nth-child(even) {
-  background-color: #f4f9fd;
-}
-.tabulator .tabulator-row:nth-child(odd) {
-  background-color: #ffffff;
-}
-.tabulator-cell {
-  padding: 10px 12px;
-  font-size: 14px;
-  color: #2c3e50;
-}
-
-/* 📂 Группы */
-.tabulator-group {
-  background-color: #e1e1e1;
-  color: #333;
-  padding: 6px 10px;
-  font-weight: normal;
+.tab-btn.active {
+  background-color: #1d4ed8;
+  border-color: #1d4ed8;
 }
 
 /* 🔍 Фильтры */
-.top-bar,
-.filters {
+.filters,
+.filters.top-bar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
   margin-bottom: 15px;
-  align-items: center;
 }
 
-.top-bar input,
-.filters input {
+.filters input,
+.top-bar input {
   padding: 6px 10px;
-  font-size: 14px;
   border: 1px solid #000;
   border-radius: 4px;
-  background-color: white;
+  font-size: 14px;
+  background: white;
   width: fit-content;
   max-width: 220px;
 }
 
-.top-bar input:focus,
-.filters input:focus {
+.top-bar input:focus {
   outline: none;
   border-color: var(--accent);
 }
 
-/* 📱 Адаптив */
-@media (max-width: 768px) {
-  .top-bar input {
-    min-width: 180px;
-  }
+/* 🧾 Таблица */
+.tabulator {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 6px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  overflow: hidden;
 }
-/* 🔧 Унификация шапки таблицы */
+
+/* Заголовок */
 .tabulator .tabulator-header {
   background-color: #e1efff;
   border-bottom: 1px solid #ccc;
@@ -173,33 +160,17 @@ body {
   border-right: 1px solid #ccc;
 }
 
+.tabulator .tabulator-col:last-child {
+  border-right: none;
+}
+
 .tabulator .tabulator-col .tabulator-col-content {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-/* 🔽 Стрелочки */
-.tabulator .tabulator-tree-control {
-  font-size: 12px;
-  transform: scale(0.9);
-  margin-left: 6px;
-  line-height: 1;
-  color: #6c757d;
-}
-
-.tabulator .tabulator-tree-control:before {
-  content: "▶";
-  display: inline-block;
-  transform: rotate(90deg);
-  transition: transform 0.2s ease;
-}
-
-.tabulator .tabulator-tree-control.collapsed:before {
-  transform: rotate(0deg);
-}
-
-/* 🧱 Стиль ячеек */
+/* Ячейки */
 .tabulator-cell {
   padding: 10px 12px !important;
   font-size: 14px;
@@ -215,12 +186,48 @@ body {
   background-color: #ffffff;
 }
 
-/* ➕ Скругления */
+.tabulator .tabulator-row {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Стрелки дерева */
+.tabulator .tabulator-tree-control {
+  font-size: 12px;
+  margin-left: 4px;
+  line-height: 1;
+  color: #6c757d;
+  transform: scale(0.9);
+}
+
+.tabulator .tabulator-tree-control:before {
+  content: "▶";
+  display: inline-block;
+  transform: rotate(90deg);
+  transition: 0.2s ease;
+}
+
+.tabulator .tabulator-tree-control.collapsed:before {
+  transform: rotate(0deg);
+}
+
+/* Скругления углов */
 .tabulator .tabulator-col:first-child .tabulator-col-content {
   border-top-left-radius: 6px;
 }
 
 .tabulator .tabulator-col:last-child .tabulator-col-content {
   border-top-right-radius: 6px;
-  border-right: none;
+}
+
+/* Плейсхолдер */
+.tabulator .tabulator-placeholder .tabulator-placeholder-contents {
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* Адаптив отключен */
+@media (max-width: 768px) {
+  .sidebar {
+    display: block !important;
+  }
 }
