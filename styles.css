@@ -1,12 +1,28 @@
 :root {
   --bg: #f4f6f9;
-  --sidebar-bg: #fff;
+  --sidebar-bg: #1e293b;
   --text: #1e1e1e;
   --muted: #6c757d;
   --accent: #007bff;
   --accent-hover: #0056b3;
   --border-color: #ddd;
   --font-main: 'Montserrat', sans-serif;
+    --sidebar-text: white;
+  --sidebar-active-bg: #334155;
+  --text-color: #111827;
+  --bg-color: #f4f6f8;
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+}
+
+.sidebar li.active {
+  background-color: var(--sidebar-active-bg);
+  font-weight: bold;
+  border-radius: 6px;
+  padding: 6px 10px;
 }
 
 /* 🌐 Базовая структура */
