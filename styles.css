@@ -279,7 +279,7 @@ body {
 }
 /* Каждому фильтру — оптимальная ширина */ #filter-name { width: 200px; } #filter-objectId { width: 100px; } #filter-status { width: 100px; } #filter-district { width: 100px; } #filter-performer { width: 120px; } #filter-year { width: 80px; } #filter-start { width: 100px; } #filter-end { width: 100px; } #filter-responsible { width: 160px; } /* Чтобы всё ровно легло в строку */ .filters { display: flex; flex-wrap: wrap; align-items: center; }
 .sidebar {
-  width: 160px; /* Было 220px */
+  width: 185px; /* Было 220px */
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
   padding: 20px 10px; /* Было 30px 20px */
