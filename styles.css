@@ -4,16 +4,12 @@
   --sidebar-bg: #1c2431;
   --sidebar-text: #ecf0f1;
   --sidebar-active-border: #3498db;
+  --sidebar-active-bg: rgba(255, 255, 255, 0.05);
   --accent: #3498db;
+  --accent-hover: #2980b9;
+  --border-color: #ccc;
   --font-main: 'Montserrat', sans-serif;
 }
-
-.app-container {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
 
 body.light {
   --bg-color: #ffffff;
@@ -21,6 +17,7 @@ body.light {
   --sidebar-bg: #ecf0f1;
   --sidebar-text: #2c3e50;
   --sidebar-active-border: #3498db;
+  --sidebar-active-bg: rgba(0, 0, 0, 0.05);
   --accent: #3498db;
 }
 
@@ -30,6 +27,7 @@ body.dark {
   --sidebar-bg: #1c2431;
   --sidebar-text: #ecf0f1;
   --sidebar-active-border: #70a1ff;
+  --sidebar-active-bg: rgba(255,255,255,0.07);
   --accent: #70a1ff;
 }
 
@@ -40,47 +38,63 @@ body {
   margin: 0;
 }
 
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
 /* === САЙДБАР === */
 .sidebar {
-  width: 220px;
+  width: 180px;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
-  padding: 30px 20px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
 }
 .sidebar h2 {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 17px;
+  margin-bottom: 24px;
 }
 .sidebar ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .sidebar li {
-  font-size: 14px;
+  font-size: 14.5px;
   margin-bottom: 10px;
-  padding: 6px 14px;
+  padding: 8px 12px;
   cursor: pointer;
   opacity: 0.85;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+.sidebar li:hover {
+  background-color: rgba(255,255,255,0.04);
 }
 .sidebar li.active {
   background-color: var(--sidebar-active-bg);
   font-weight: bold;
   opacity: 1;
-  position: relative;
 }
 .sidebar li.active::before {
   content: '';
   position: absolute;
-  left: 0; top: 0;
-  width: 4px; height: 100%;
-  background-color: var(--accent);
-  border-radius: 4px 0 0 4px;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background-color: var(--sidebar-active-border);
+  border-radius: 3px 0 0 3px;
 }
 
-
-/* 📦 Контент */
+/* === Контент === */
 .main-content {
   flex: 1;
   display: flex;
@@ -102,7 +116,7 @@ body {
   margin: 0;
 }
 
-/* 🌓 Кнопка смены темы */
+/* === Кнопка темы === */
 .theme-toggle {
   background: transparent;
   border: none;
@@ -111,7 +125,7 @@ body {
   cursor: pointer;
 }
 
-/* 📌 Вкладки */
+/* === Вкладки === */
 .tabs {
   display: flex;
   gap: 10px;
@@ -145,7 +159,7 @@ body {
   display: block;
 }
 
-/* 🔍 Фильтры */
+/* === Фильтры === */
 .top-bar {
   display: flex;
   flex-wrap: wrap;
@@ -169,7 +183,7 @@ body {
   border-color: var(--accent);
 }
 
-/* 📋 Таблица Tabulator */
+/* === Таблица Tabulator === */
 .tabulator {
   background-color: white;
   border: 1px solid var(--border-color);
@@ -182,7 +196,7 @@ body {
 
 .tabulator .tabulator-header .tabulator-col {
   padding: 8px 10px;
-  background-color: #e1efff !important; /* светло-синий фон */
+  background-color: #e1efff !important;
   color: #111827;
   font-weight: 600;
   font-size: 13px;
@@ -207,7 +221,6 @@ body {
   color: #2c3e50;
 }
 
-/* 📂 Группировка */
 .tabulator-group {
   background-color: #e1e1e1;
   color: #333;
@@ -222,7 +235,6 @@ body {
   font-size: 10px;
 }
 
-/* Стрелочки Tabulator */
 .tabulator .tabulator-tree-control {
   font-size: 10px;
   transform: scale(0.8);
@@ -243,7 +255,7 @@ body {
   transform: rotate(0deg);
 }
 
-/* Мобилки */
+/* === Мобилки === */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
