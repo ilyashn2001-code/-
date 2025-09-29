@@ -221,19 +221,36 @@ document.getElementById("filter-responsible").addEventListener("input", function
   tableObjects.setFilter("responsible", "like", this.value);
 });
 
+
+
   
-  // Фильтрация объектов
-  const objectFilterInputs = document.querySelectorAll("#tab-objects .top-bar input");
-  objectFilterInputs.forEach((input) => {
+// 🔍 Фильтрация по полям
+const filterInputs = {
+  name: "filter-name",
+  district: "filter-district",
+  performer: "filter-performer",
+  year: "filter-year",
+  responsible: "filter-responsible",
+  startDate: "filter-start",
+  endDate: "filter-end",
+};
+
+Object.entries(filterInputs).forEach(([field, inputId]) => {
+  const input = document.getElementById(inputId);
+  if (input) {
     input.addEventListener("input", () => {
-      const filters = [...objectFilterInputs]
-        .map((el) => {
-          const value = el.value.trim();
-          const field = el.id.replace("filter-", "");
-          return value ? { field, type: "like", value } : null;
-        })
-        .filter(Boolean);
+      const filters = [];
+
+      Object.entries(filterInputs).forEach(([f, id]) => {
+        const val = document.getElementById(id).value.trim();
+        if (val !== "") {
+          filters.push({ field: f, type: "like", value: val });
+        }
+      });
+
       tableObjects.setFilter(filters);
     });
-  });
+  }
+});
+
 });
