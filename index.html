@@ -622,12 +622,6 @@ document.getElementById("filter-doc-date").addEventListener("input", e => {
 document.getElementById("filter-name").addEventListener("input", function () {
   tableObjects.setFilter("name", "like", this.value);
 });
-document.getElementById("filter-objectId").addEventListener("input", function () {
-  tableObjects.setFilter("objectId", "like", this.value);
-});
-document.getElementById("filter-status").addEventListener("input", function () {
-  tableObjects.setFilter("status", "like", this.value); // ⚠️ ДОБАВЬ это поле в таблицу, иначе не будет работать!
-});
 document.getElementById("filter-district").addEventListener("input", function () {
   tableObjects.setFilter("district", "like", this.value);
 });
@@ -672,30 +666,7 @@ const savedTheme = localStorage.getItem('theme') || 'light';
 document.documentElement.setAttribute('data-theme', savedTheme);
 updateThemeIcon(savedTheme);
 
-const objectFilters = {
-  name: "filter-name",
-  objectId: "filter-objectId",
-  district: "filter-district",
-  performer: "filter-performer",
-  year: "filter-year",
-  responsible: "filter-responsible",
-  startDate: "filter-start",
-  endDate: "filter-end"
-};
 
-for (const [field, inputId] of Object.entries(objectFilters)) {
-  const input = document.getElementById(inputId);
-  if (input) {
-    input.addEventListener("input", () => {
-      const filters = [];
-      for (const [f, id] of Object.entries(objectFilters)) {
-        const val = document.getElementById(id)?.value?.trim();
-        if (val) filters.push({ field: f, type: "like", value: val });
-      }
-      tableObjects.setFilter(filters);
-    });
-  }
-}
 
   
 </script>
