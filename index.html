@@ -672,6 +672,30 @@ const savedTheme = localStorage.getItem('theme') || 'light';
 document.documentElement.setAttribute('data-theme', savedTheme);
 updateThemeIcon(savedTheme);
 
+const objectFilters = {
+  name: "filter-name",
+  objectId: "filter-objectId",
+  district: "filter-district",
+  performer: "filter-performer",
+  year: "filter-year",
+  responsible: "filter-responsible",
+  startDate: "filter-start",
+  endDate: "filter-end"
+};
+
+for (const [field, inputId] of Object.entries(objectFilters)) {
+  const input = document.getElementById(inputId);
+  if (input) {
+    input.addEventListener("input", () => {
+      const filters = [];
+      for (const [f, id] of Object.entries(objectFilters)) {
+        const val = document.getElementById(id)?.value?.trim();
+        if (val) filters.push({ field: f, type: "like", value: val });
+      }
+      tableObjects.setFilter(filters);
+    });
+  }
+}
 
   
 </script>
