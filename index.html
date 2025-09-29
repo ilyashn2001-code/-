@@ -6,7 +6,8 @@
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+
   <!-- Tabulator CSS -->
   <link href="https://unpkg.com/tabulator-tables@5.5.0/dist/css/tabulator.min.css" rel="stylesheet">
 
@@ -31,10 +32,15 @@
   
  <!-- Main Content -->
   <main class="main-content">
-    <div class="header">
-      <h1>Журналы</h1>
-           <button id="themeToggle" class="theme-toggle" title="Переключить тему">🌗</button>
-    </div>
+ <div class="header">
+  <h1>Журналы</h1>
+  <div style="display: flex; align-items: center; gap: 10px; margin-left: auto;">
+    <button id="themeToggle" class="theme-toggle" title="Переключить тему">🌗</button>
+    <button id="exportExcelBtn" class="export-btn" title="Скачать Excel">
+      <i class="fas fa-file-excel"></i> Выгрузить в Excel
+    </button>
+  </div>
+</div>
 
     <div class="tabs">
      <button class="tab-btn active" data-tab="tab-objects">
@@ -659,6 +665,21 @@ document.getElementById("filter-end").addEventListener("input", function () {
 
 
 
+document.getElementById("exportExcelBtn").addEventListener("click", function () {
+  const wb = XLSX.utils.book_new();
+
+  // Экспорт объектов
+  const objectData = tableObjects.getData();
+  const objectSheet = XLSX.utils.json_to_sheet(objectData);
+  XLSX.utils.book_append_sheet(wb, objectSheet, "Объекты");
+
+  // Экспорт документов
+  const documentData = tableDocuments.getData();
+  const documentSheet = XLSX.utils.json_to_sheet(documentData);
+  XLSX.utils.book_append_sheet(wb, documentSheet, "Документы");
+
+  XLSX.writeFile(wb, "Журналы.xlsx");
+});
 
   
 
