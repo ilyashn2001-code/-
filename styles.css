@@ -279,3 +279,43 @@ body {
 }
 /* Каждому фильтру — оптимальная ширина */ #filter-name { width: 200px; } #filter-objectId { width: 100px; } #filter-status { width: 100px; } #filter-district { width: 100px; } #filter-performer { width: 120px; } #filter-year { width: 80px; } #filter-start { width: 100px; } #filter-end { width: 100px; } #filter-responsible { width: 160px; } /* Чтобы всё ровно легло в строку */ .filters { display: flex; flex-wrap: wrap; align-items: center; }
 
+/* Убираем жирный шрифт и делаем стиль заголовка группы, как у строки объекта */
+.tabulator-group {
+  background-color: #f9f9f9;
+  font-weight: normal;
+  font-size: 14px;
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Иконка сворачивания группы — сделаем её в стиле объектов */
+.tabulator-group-toggle {
+  color: #888;
+  font-size: 14px;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+/* Чтобы строки выглядели как в объектах */
+.tabulator-row {
+  border-bottom: 1px solid #eee;
+}
+
+/* Стилизация заголовков */
+.tabulator .tabulator-header {
+  background-color: #eaf2fc;
+  border-bottom: 1px solid #ccc;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+  border-right: 1px solid #ccc;
+  padding: 6px 8px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Ячейки */
+.tabulator-cell {
+  padding: 6px 8px;
+  border-right: 1px solid #eee;
+}
