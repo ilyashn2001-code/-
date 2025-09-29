@@ -570,6 +570,7 @@ const objectsWithDocuments = [
  const documentsDataFromObjects = objectsWithDocuments.flatMap(obj =>
   obj.documents.map(doc => ({
     name: doc.name,
+      workType: doc.workType,
     docNumber: doc.number,
     uploadDate: doc.date,
     pageCount: doc.pages,
