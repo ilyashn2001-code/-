@@ -11,7 +11,7 @@
   --font-main: 'Montserrat', sans-serif;
 }
 
-body.light {
+[data-theme="light"] {
   --bg-color: #ffffff;
   --text-color: #222;
   --sidebar-bg: #ecf0f1;
@@ -21,7 +21,7 @@ body.light {
   --accent: #3498db;
 }
 
-body.dark {
+[data-theme="dark"] {
   --bg-color: #1e1e2f;
   --text-color: #ecf0f1;
   --sidebar-bg: #1c2431;
@@ -30,6 +30,7 @@ body.dark {
   --sidebar-active-border: #70a1ff;
   --accent: #70a1ff;
 }
+
 
 body {
   background-color: var(--bg-color);
