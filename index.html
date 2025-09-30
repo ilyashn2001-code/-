@@ -72,7 +72,8 @@
    <div id="tab-documents" class="tab-section">
   <div class="filters top-bar">
     <input type="text" id="filter-doc-name" placeholder="Наименование документа">
-    <input type="text" id="filter-doc-number" placeholder="Номер">
+      <input type="text" id="filter-doc-contract" placeholder="Номер контракта">
+    <input type="text" id="filter-doc-number" placeholder="Номер документа">
     <input type="text" id="filter-doc-date" placeholder="Дата">
   </div>
   <div id="table-documents"></div>
@@ -456,6 +457,7 @@ const objectsWithDocuments = [
       {
         name: "АОСР на Демонтаж бортового камня",
         workType: "Ремонт покрытия асфальтобетонного проезда в рамках благоустройства территории",
+          contractNumber: "2222",
         number: "3.1/18/1",
         date: "31.05.2024",
         pages: 1
@@ -463,6 +465,7 @@ const objectsWithDocuments = [
       {
         name: "АОСР на Срезку слоя АБ покрытия методом холодного фрезерования",
            workType: "Ремонт покрытия асфальтобетонного тротуара в рамках благоустройства территории",
+          contractNumber: "2222",
         number: "1.1/18/1",
         date: "31.05.2024",
         pages: 1
@@ -470,6 +473,7 @@ const objectsWithDocuments = [
       {
         name: "АОСР на Срезку слоя АБ покрытия методом холодного фрезерования",
            workType: "Устройство дорожного бортового камня в рамках благоустройства территории",
+          contractNumber: "2222",
         number: "2.1/18/1",
         date: "31.05.2024",
         pages: 1
@@ -605,7 +609,8 @@ function pluralizeDocs(count) {
 const documentColumns = [
   { title: "Наименование", field: "name", widthGrow: 2 },
   { title: "Вид работ", field: "workType" },
-  { title: "Номер", field: "docNumber" },
+   { title: "Номер контракта", field: "contractNumber" },
+  { title: "Номер документа", field: "docNumber" },
   { title: "Дата", field: "uploadDate" },
   { title: "Кол-во листов", field: "pageCount" }
 ];
