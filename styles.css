@@ -247,3 +247,7 @@ body {
   float: right;
   font-size: 20px;
 }
+/* Отступ от фильтров до таблицы */
+.filters + .tabulator {
+  margin-top: 16px;
+}
