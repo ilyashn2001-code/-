@@ -313,7 +313,7 @@ table {
   background-color: white;
 }
 .tabulator .tabulator-header {
-  background-color: var(--accent) !important;
+ background-color: #c9d8f2 !important;
   color: white !important;
   font-weight: 600;
   font-size: 14px;
