@@ -396,3 +396,22 @@ table {
 .tabulator .tabulator-header {
   background-color: #c9d8f2 !important; /* или #bcd3ee */
 }
+/* Горизонтальные линии */
+.tabulator .tabulator-row {
+  border-bottom: 1px solid #e0e0e0; /* светло-серая тонкая линия */
+}
+
+/* Вертикальные линии */
+.tabulator .tabulator-cell {
+  border-right: 1px solid #e0e0e0; /* светло-серая тонкая линия */
+}
+
+/* Убираем лишнюю жирность у последней ячейки */
+.tabulator .tabulator-cell:last-child {
+  border-right: none;
+}
+
+/* Таблица без жирных внешних рамок */
+.tabulator {
+  border: none;
+}
