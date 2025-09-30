@@ -282,3 +282,47 @@ body {
 #filter-doc-date {
   width: 130px;
 }
+/* === Заголовки таблицы === */
+table th {
+  background-color: var(--accent);   /* основной синий цвет */
+  color: white;
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* === Общие стили строк таблицы === */
+table td {
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: white;
+}
+
+/* === Чередование фона строк (зебра) === */
+table tbody tr:nth-child(even) td {
+  background-color: #f0f7ff; /* светло-голубой */
+}
+
+/* === Убираем лишние границы и делаем таблицу чище === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: white;
+}
+.tabulator .tabulator-header {
+  background-color: var(--accent) !important;
+  color: white !important;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tabulator .tabulator-row:nth-child(even) {
+  background-color: #f0f7ff;
+}
+
+.tabulator .tabulator-row:nth-child(odd) {
+  background-color: white;
+}
