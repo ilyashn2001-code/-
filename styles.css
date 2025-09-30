@@ -271,13 +271,15 @@ body {
 #filter-end {
   width: 130px;
 }
-
+#filter-doc-contract {
+  width: 160px;
+}
 /* === Ширина фильтров: вкладка "Документы" === */
 #filter-doc-name {
   width: 280px;
 }
 #filter-doc-number {
-  width: 120px;
+  width: 160px;
 }
 #filter-doc-date {
   width: 130px;
