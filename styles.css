@@ -392,3 +392,7 @@ table {
 #table-documents .tabulator-header .tabulator-col {
   border-right: none !important;
 }
+/* Цвет заголовка таблицы */
+.tabulator .tabulator-header {
+  background-color: #c9d8f2 !important; /* или #bcd3ee */
+}
