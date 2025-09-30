@@ -43,44 +43,64 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-
+ 
 /* === САЙДБАР === */
 .sidebar {
-  width: 220px;
+  width: 185px;
   background-color: var(--sidebar-bg);
   color: var(--sidebar-text);
-  padding: 30px 20px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
 }
+
 .sidebar h2 {
-  font-size: 18px;
-  margin-bottom: 30px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--sidebar-text);
 }
+
 .sidebar ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
 .sidebar li {
-  font-size: 14px;
+  font-size: 14.5px;
   margin-bottom: 10px;
-  padding: 6px 14px;
+  padding: 8px 12px;
   cursor: pointer;
   opacity: 0.85;
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  position: relative;
 }
+
+.sidebar li:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
 .sidebar li.active {
   background-color: var(--sidebar-active-bg);
   font-weight: bold;
   opacity: 1;
   position: relative;
 }
+
 .sidebar li.active::before {
   content: '';
   position: absolute;
-  left: 0; top: 0;
-  width: 4px; height: 100%;
-  background-color: var(--accent);
-  border-radius: 4px 0 0 4px;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background-color: var(--sidebar-active-border);
+  border-radius: 3px 0 0 3px;
 }
 
 /* 👇 Активная иконка — голубая */
