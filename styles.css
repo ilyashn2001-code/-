@@ -415,3 +415,9 @@ table {
 .tabulator {
   border: none;
 }
+
+/* Унифицируем цвет текста во всех таблицах */
+.tabulator .tabulator-cell,
+.tabulator .tabulator-header .tabulator-col .tabulator-col-title {
+  color: #333 !important;
+}
