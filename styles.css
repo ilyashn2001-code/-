@@ -356,3 +356,20 @@ table {
   border-right: none !important;
 }
 
+/* Убираем границы у всех таблиц Tabulator */
+.tabulator {
+  border: none !important;
+}
+
+.tabulator .tabulator-header {
+  border-bottom: none !important;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+  border-right: none !important;
+  background-color: #5ca4ff1a !important; /* светло-синий, менее насыщенный */
+}
+
+.tabulator-row .tabulator-cell {
+  border-right: none !important;
+}
