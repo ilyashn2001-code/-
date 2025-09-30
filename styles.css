@@ -14,7 +14,7 @@
 }
 
 [data-theme="dark"] {
-  --bg-color: #1c1c1c;
+ --bg-color: linear-gradient(135deg, #1e003e, #b71c8d); 
   --text-color: #f4f7fb;
   --sidebar-bg: #121212;
   --sidebar-text: #ffffff;
@@ -455,4 +455,10 @@ table {
 /* Убираем последнее правое разделение, чтобы не было двойного бордера */
 .tabulator .tabulator-row .tabulator-cell:last-child {
   border-right: none !important;
+}
+.filters input:focus,
+.filters select:focus {
+  border-color: #000 !important; /* черный обвод */
+  outline: none;
+  box-shadow: none;
 }
