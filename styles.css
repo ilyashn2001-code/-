@@ -440,3 +440,22 @@ table {
 .tabulator {
   border: none !important;
 }
+/* Горизонтальные линии */
+.tabulator .tabulator-row {
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+/* Вертикальные линии */
+.tabulator .tabulator-cell {
+  border-right: 1px solid #e0e0e0 !important;
+}
+
+/* Убираем границу у последней ячейки */
+.tabulator .tabulator-cell:last-child {
+  border-right: none !important;
+}
+
+/* Убираем рамку у всей таблицы */
+.tabulator {
+  border: none !important;
+}
