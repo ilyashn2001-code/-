@@ -392,8 +392,3 @@ table {
 #table-documents .tabulator-header .tabulator-col {
   border-right: none !important;
 }
-/* Унифицируем цвет текста во всех таблицах */
-.tabulator .tabulator-cell,
-.tabulator .tabulator-header .tabulator-col .tabulator-col-title {
-  color: #333 !important;
-}
