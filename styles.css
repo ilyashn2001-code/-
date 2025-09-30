@@ -339,4 +339,20 @@ table {
   border-bottom: none !important;
   box-shadow: none !important;
 }
+.tabulator {
+  border: none !important;
+}
+
+.tabulator .tabulator-header {
+  border-bottom: none !important;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+  border-right: none !important;
+  background-color: #5ca4ff !important; /* или свой мягкий синий */
+}
+
+.tabulator-row .tabulator-cell {
+  border-right: none !important;
+}
 
