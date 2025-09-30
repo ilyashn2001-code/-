@@ -459,3 +459,17 @@ table {
 .tabulator {
   border: none !important;
 }
+/* Общие стили для таблиц Tabulator */
+.tabulator .tabulator-row {
+  border-bottom: 1px solid #ddd !important;
+}
+
+.tabulator .tabulator-cell {
+  border-right: 1px solid #ddd !important;
+  color: #444 !important;
+}
+
+/* Убираем последнее правое разделение, чтобы не было двойного бордера */
+.tabulator .tabulator-row .tabulator-cell:last-child {
+  border-right: none !important;
+}
