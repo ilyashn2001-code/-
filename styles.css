@@ -313,7 +313,7 @@ table {
   background-color: white;
 }
 .tabulator .tabulator-header {
- background-color: #c9d8f2 !important;
+ background-color: #bcd3ee !important;
   color: white !important;
   font-weight: 600;
   font-size: 14px;
@@ -394,7 +394,7 @@ table {
 }
 /* Цвет заголовка таблицы */
 .tabulator .tabulator-header {
-  background-color: #c9d8f2 !important; /* или #bcd3ee */
+  background-color: #bcd3ee !important; /* или #bcd3ee */
 }
 /* Горизонтальные линии */
 .tabulator .tabulator-row {
