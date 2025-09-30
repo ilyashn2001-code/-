@@ -328,15 +328,15 @@ table {
 }
 /* Сделать фон заголовков таблицы синим */
 .tabulator .tabulator-col {
-  background-color: var(--accent) !important;
+  background-color: #5ca4ff !important; /* 👈 более мягкий синий */
   color: white !important;
   font-weight: 600;
   font-size: 14px;
   border: none;
 }
 
-/* Убираем серую линию между шапкой и таблицей */
 .tabulator .tabulator-header {
   border-bottom: none !important;
   box-shadow: none !important;
 }
+
