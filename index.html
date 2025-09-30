@@ -592,6 +592,7 @@ const objectsWithDocuments = [
   obj.documents.map(doc => ({
     name: doc.name,
       workType: doc.workType,
+     contractNumber: doc.contractNumber || "",
     docNumber: doc.number,
     uploadDate: doc.date,
     pageCount: doc.pages,
@@ -668,6 +669,9 @@ document.getElementById("filter-end").addEventListener("input", function () {
   tableObjects.setFilter("endDate", "like", this.value);
 });
 
+document.getElementById("filter-doc-contract").addEventListener("input", e => {
+  tableDocuments.setFilter("contractNumber", "like", e.target.value);
+});
 
 
 
