@@ -326,3 +326,18 @@ table {
 .tabulator .tabulator-row:nth-child(odd) {
   background-color: white;
 }
+/* === Убрать жирные серые линии в таблицах === */
+#tab-documents table,
+#tab-documents table th,
+#tab-documents table td,
+#tab-documents table tr {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Убрать лишние границы у Tabulator, если используется */
+#tab-documents .tabulator .tabulator-cell,
+#tab-documents .tabulator .tabulator-header {
+  border: none !important;
+  box-shadow: none !important;
+}
