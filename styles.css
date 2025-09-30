@@ -62,49 +62,59 @@ body {
 
 .sidebar h2 {
   font-size: 18px;
-  margin-bottom: 30px;
   font-weight: 600;
+  margin-bottom: 30px;
 }
 
 .sidebar ul {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .sidebar li {
-  font-size: 14px;
-  margin-bottom: 10px;
-  padding: 6px 14px;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: var(--sidebar-text);
+  gap: 10px;
+  font-size: 14px;
+  padding: 8px 12px 8px 16px;
+  margin-bottom: 6px;
+  cursor: pointer;
   opacity: 0.85;
-  border-radius: 4px;
-  transition: background 0.2s ease, opacity 0.2s ease;
+  color: var(--sidebar-text);
+  border-radius: 6px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  position: relative;
 }
 
 .sidebar li:hover {
-  opacity: 1;
   background-color: rgba(255, 255, 255, 0.05);
+  opacity: 1;
 }
 
 .sidebar li.active {
-  background-color: var(--sidebar-active-bg);
+  background-color: transparent;
   font-weight: bold;
   opacity: 1;
-  position: relative;
 }
 
 .sidebar li.active::before {
   content: '';
   position: absolute;
   left: 0;
-  top: 0;
+  top: 4px;
+  bottom: 4px;
   width: 4px;
-  height: 100%;
   background-color: var(--accent);
-  border-radius: 4px 0 0 4px;
+  border-radius: 3px;
+}
+
+/* Иконки */
+.sidebar li i {
+  font-size: 16px;
+  width: 18px;
+  text-align: center;
+  opacity: 0.9;
 }
 
 /* === ГЛАВНАЯ ОБЛАСТЬ === */
