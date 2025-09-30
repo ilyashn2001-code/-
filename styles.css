@@ -462,3 +462,64 @@ table {
   outline: none;
   box-shadow: none;
 }
+
+
+
+
+/* === Фиксированные стили для фильтров === */
+.filters input,
+.filters select {
+  background: #fff !important;
+  color: #222 !important;
+  border: 1px solid #ccc !important;
+}
+
+.filters input:focus,
+.filters select:focus {
+  border-color: #000 !important;
+  outline: none;
+  box-shadow: none;
+}
+
+/* === Фиксированные стили для вкладок === */
+.tab-btn {
+  background: #fff !important;
+  border: 1px solid #ccc !important;
+  color: #333 !important;
+}
+
+.tab-btn.active {
+  background-color: #2979ff !important;
+  color: white !important;
+  border-color: #2979ff !important;
+}
+
+/* === Кнопка экспорта === */
+.export-btn {
+  background: #2979ff !important;
+  color: white !important;
+  border: none !important;
+}
+
+.export-btn:hover {
+  background-color: #1565c0 !important;
+}
+
+/* === Таблицы Tabulator (фиксация цветов) === */
+.tabulator {
+  background-color: #fff !important;
+  color: #333 !important;
+}
+
+.tabulator .tabulator-col {
+  background-color: #5ca4ff !important;
+  color: white !important;
+}
+
+.tabulator .tabulator-row:nth-child(even) {
+  background-color: #f0f7ff !important;
+}
+
+.tabulator .tabulator-row:nth-child(odd) {
+  background-color: #fff !important;
+}
