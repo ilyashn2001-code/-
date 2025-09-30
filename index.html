@@ -39,15 +39,21 @@
   </div>
 </div>
 
-    <div class="tabs">
-     <button class="tab-btn active" data-tab="tab-objects">
-  <i class="fas fa-folder"></i> Реестр объектов
-</button>
-<button class="tab-btn" data-tab="tab-documents">
-  <i class="fas fa-paperclip"></i> Реестр документов
-</button>
+   <div class="tabs" style="justify-content: space-between; align-items: center;">
+  <div style="display: flex; gap: 8px;">
+    <button class="tab-btn active" data-tab="tab-objects">
+      <i class="fas fa-folder"></i> Реестр объектов
+    </button>
+    <button class="tab-btn" data-tab="tab-documents">
+      <i class="fas fa-paperclip"></i> Реестр документов
+    </button>
+  </div>
 
-    </div>
+  <button id="exportExcelBtn" class="export-btn" title="Скачать Excel">
+    <i class="fas fa-file-excel"></i> Выгрузить в Excel
+  </button>
+</div>
+
 
 <div id="tab-objects" class="tab-section active">
       <div class="filters top-bar">
@@ -59,9 +65,6 @@
         <input type="text" id="filter-start" placeholder="Начало">
         <input type="text" id="filter-end" placeholder="Окончание">
 
-            <button id="exportExcelBtn" class="export-btn" title="Скачать Excel">
-      <i class="fas fa-file-excel"></i> Выгрузить в Excel
-    </button>
       </div>
       <div id="table-objects"></div>
     </div>
