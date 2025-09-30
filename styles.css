@@ -251,3 +251,16 @@ body {
 .filters + .tabulator {
   margin-top: 16px;
 }
+#searchInput { width: 300px; }       /* Поиск */
+#districtFilter { width: 100px; }
+#typeFilter { width: 140px; }
+#dateStartFilter { width: 130px; }
+#dateEndFilter { width: 130px; }
+#fioFilter { width: 170px; }
+#violationFilter { width: 140px; }
+#documentNameFilter { width: 260px; }     /* Наименование */
+#documentTypeFilter { width: 160px; }     /* Тип документа */
+#objectNameFilter { width: 260px; }       /* Объект */
+#responsibleFilter { width: 170px; }      /* Ответственный */
+#documentStartFilter { width: 130px; }    /* Дата начала */
+#documentEndFilter { width: 130px; }      /* Дата окончания */
