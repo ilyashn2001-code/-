@@ -373,3 +373,22 @@ table {
 .tabulator-row .tabulator-cell {
   border-right: none !important;
 }
+/* Убираем серые границы у строк таблицы */
+#table-documents .tabulator-row {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Убираем правую границу у ячеек */
+#table-documents .tabulator-cell {
+  border-right: none !important;
+}
+
+/* Убираем лишние границы у заголовков */
+#table-documents .tabulator-header {
+  border-bottom: none !important;
+}
+
+#table-documents .tabulator-header .tabulator-col {
+  border-right: none !important;
+}
