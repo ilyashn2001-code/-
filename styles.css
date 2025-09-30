@@ -251,16 +251,34 @@ body {
 .filters + .tabulator {
   margin-top: 16px;
 }
-#nameFilter { width: 300px; }        /* Наименование объекта */
-#districtFilter { width: 100px; }    /* Округ */
-#executorFilter { width: 150px; }    /* Исполнитель */
-#yearFilter { width: 80px; }         /* Год */
-#fioFilter { width: 170px; }         /* Ответственный */
-#startDateFilter { width: 130px; }   /* Начало */
-#endDateFilter { width: 130px; }     /* Окончание */
-#documentNameFilter { width: 260px; }     /* Наименование */
-#documentTypeFilter { width: 160px; }     /* Тип документа */
-#objectNameFilter { width: 260px; }       /* Объект */
-#responsibleFilter { width: 170px; }      /* Ответственный */
-#documentStartFilter { width: 130px; }    /* Дата начала */
-#documentEndFilter { width: 130px; }      /* Дата окончания */
+/* === Ширина фильтров: вкладка "Объекты" === */
+#filter-name {
+  width: 260px;
+}
+#filter-district {
+  width: 100px;
+}
+#filter-performer {
+  width: 160px;
+}
+#filter-year {
+  width: 80px;
+}
+#filter-responsible {
+  width: 180px;
+}
+#filter-start,
+#filter-end {
+  width: 130px;
+}
+
+/* === Ширина фильтров: вкладка "Документы" === */
+#filter-doc-name {
+  width: 280px;
+}
+#filter-doc-number {
+  width: 120px;
+}
+#filter-doc-date {
+  width: 130px;
+}
